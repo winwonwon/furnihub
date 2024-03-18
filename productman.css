@@ -1,0 +1,33 @@
+/* YUNG MAI SEDDDDDDa
+
+/* Center the h1 horizontally */
+h1 {
+    text-align: center;
+  }
+  
+  /* Style the table */
+  table {
+    margin: 0 auto;
+    border-collapse: collapse; /* Collapse border spacing */
+    width: 80%; /* Set width to 80% of the container */
+  }
+  
+  /* Style table headers */
+  th {
+    background-color: #f2f2f2; /* Light gray background */
+    padding: 8px; /* Add padding */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Add bottom border */
+  }
+  
+  /* Style table cells */
+  td {
+    padding: 8px; /* Add padding */
+    border-bottom: 1px solid #ddd; /* Add bottom border */
+  }
+  
+  /* Style alternating row background */
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background */
+  }
+  
