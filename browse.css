@@ -88,3 +88,19 @@
     top: 30px;
     transform: translateX(45%);
 }
+
+.over{
+    position: absolute;
+    left: 240px; /* Adjust the horizontal position of the text */
+    color: white;
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.overlay{
+    position: absolute;
+    left: 690px; 
+    color: white;
+    margin-top: 0px;
+    font-size: 17px;
+}
