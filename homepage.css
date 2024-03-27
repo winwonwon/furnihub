@@ -7,24 +7,25 @@
     scroll-behavior: smooth;
 }
 
+/* Setting bg color for the entire page */
 body {
     background: #f9f8f7;
 }
 
-.header1 {
+.first_part {
     display: flex;
     align-items: center;
     margin: 20px;
     margin-top: 10px;
 }
 
-.header1 .user_icons i{
+.first_part .user_icons i{
     font-size: 35px;
     color: #153147;
     padding: 0px 10px;
 }
 
-.header1 h1 {
+.first_part h1 {
     font-size: 25px;
     color: #153147;
     text-decoration: underline;
@@ -32,28 +33,27 @@ body {
     cursor: pointer;
 }
 
-.header1 h1:hover{
+.first_part h1:hover{
     color: #ADB8BB;
 }
 
-.header1 .menu_icons i{
+.first_part .menu_icons i{
     font-size: 45px;
     color: #153147;
     padding: 0 5px;
     cursor: pointer;
 }
 
-.header1 .menu_icons i:hover{
+.first_part .menu_icons i:hover{
     color: #ADB8BB;
 }
 
 .navigation {
     background-color: #153147;
     position: fixed;
-    top: 0;
+    bottom: 0; right: 0; top: 0;
     right: 100%;
     width: 500px;
-    height: 100%;
     z-index: 1000; 
     transition: left 1s ease;
     display: flex;
@@ -62,13 +62,8 @@ body {
     justify-content: center;
 }
 
-.menu-container ul {
-    list-style: none;
-    padding: 0;
-}
-
 .menu-container ul li {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .menu-container ul li a {
@@ -81,7 +76,8 @@ body {
 
 .menu-container ul li a:hover{
     color: #ADB8BB;
-}
+} 
+
 
 .close_icons i {
     color: #EDEAE4;
@@ -98,6 +94,7 @@ body {
     color: #ADB8BB;
 }
 
+/* Showing the nav menu when active */
 .navigation.active {
     right: 0px;
 }
@@ -156,14 +153,14 @@ input:focus {
     color: rgb(102, 102, 102);
 }
 
-.header2{
+.second_part{
     font-size: 12px;
     margin: 30px;
     margin-top: 10px;
     margin-bottom: 0px;
 }
 
-.header2_1{
+.second_part_1{
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
@@ -200,12 +197,13 @@ input:focus {
     position: absolute; 
 }
 
+/* For these images, sets a max width and height of 200 px, ensuring they don't exceed these dimensions.*/
 .brand img[src="ikea_logo.png"], .brand img[src="homepro_logo.png"], .brand img[src="index.png"] {
     max-width: 200px; 
     max-height: 200px; 
 }
 
-.header3{
+.third_part{
     font-size: 12px;
     font-weight: 800;
     margin: 30px;
@@ -221,7 +219,7 @@ input:focus {
     white-space: nowrap; 
 }
 
-.header3_1 {
+.third_part_1 {
     display: inline-flex;
     width: auto;
 }
@@ -242,25 +240,28 @@ input:focus {
     max-height:100%; 
 }
 
+/* Adjusts the margins to create spacing around the image and sets a max width of 250 px. */
 .best_seller img[src="meltorp.png"] {
     margin-top: 50px;
     margin-bottom: 20px;
     max-width: 250px; 
 }
 
+/* Sets font size, aligns the text to the left, and adds 5 px of padding around the container.*/
 .best_seller_des {
     font-size: 14px;
     text-align: left;
     padding: 5px;
 }
 
+/* Applies a shadow when hovered over best seller.*/
 .best_seller:hover{
     box-shadow: 0 3px 6px rgb(79, 79, 79);
 }
 
+/* Styles the footer section of the webpage by sets the bg*/
 .footer {
     background-color: #EDEAE4; 
     padding: 22px;
-    text-align: center; 
 }
 

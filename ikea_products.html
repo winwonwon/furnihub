@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="ikea_products.css">
+        <title>Furnihub</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="back_icons" id="backIcon">
+                <h1>&lt;Back</h1>
+            </div>
+            <h1>IKEA</h1>
+            <div class="filter_icons">
+                <i class='bx bx-filter'></i>
+            </div>
+        </header>
+
+        <div class="filter_form" id="filterForm">
+            <form>
+                <h1>Filter the Furniture</h1>
+                <div class="form_group">
+                    <label for="category">Category:</label>
+                    <select name="category" id="category">
+                        <option value="all">All</option>
+                        <option value="sofa">Sofa</option>
+                        <option value="bed">Bed</option>
+                        <option value="desk">Desk</option>
+                        <option value="shelf">Shelf</option>
+                        <option value="pillow">Pillow</option>
+                        <option value="wardrobe">Wardrobe</option>
+                    </select>
+                </div>
+                <div class="form_group">
+                    <label for="price">Price Range:</label>
+                    <input type="number" id="price" name="price" min="0" step="100">
+                </div>
+                <div class="form_group">
+                    <label for="room">Room:</label>
+                    <select name="room" id="room">
+                        <option value="all">All</option>
+                        <option value="living_room">Living Room</option>
+                        <option value="bedroom">Bedroom</option>
+                        <option value="kitchen">Kitchen</option>
+                        <option value="dining_room">Dining Room</option>
+                        <option value="bathroom">Bathroom</option>
+                        <option value="home_office">Home Office</option>
+                        <option value="outdoor">Outdoor</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+
+        <div class="products_ikea">
+            <div class="ikea">
+                <!-- product items will be added dynamically here -->
+            </div>
+        </div>
+    
+        <script src="ikea_products.js"></script>
+
+    </body>
+</html>
+
+
+
+
+       <!--  <div class="products_ikea">
+            <div class="ikea">
+                <div class="products">
+                    <img src="vimle.png">
+                    <div class="products_des">
+                        <h2>VIMLE</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>25,950 THB</h2>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <img src="meltorp.png">
+                    <div class="products_des">
+                        <h2>MELTORP</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>5,190 THB</h2>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <img src="borgeby.png">
+                    <div class="products_des">
+                        <h2>BORGEBY</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>2,590 THB</h2>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <img src="malm.png">
+                    <div class="products_des">
+                        <h2>MALM</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>9,990 THB</h2>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <img src="hemnes.png">
+                    <div class="products_des">
+                        <h2>HEMNES</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>20,970 THB</h2>
+                    </div> 
+                 </div>
+
+                 <div class="products">
+                    <img src="luckjasmin.png">
+                    <div class="products_des">
+                        <h2>LUCKJASMIN</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>1,290 THB</h2>
+                    </div> 
+                 </div>
+
+                 <div class="products">
+                    <img src="luckjasmin.png">
+                    <div class="products_des">
+                        <h2>LUCKJASMIN</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>1,290 THB</h2>
+                    </div> 
+                 </div>
+
+                 <div class="products">
+                    <img src="luckjasmin.png">
+                    <div class="products_des">
+                        <h2>LUCKJASMIN</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>1,290 THB</h2>
+                    </div> 
+                 </div>
+
+                 <div class="products">
+                    <img src="luckjasmin.png">
+                    <div class="products_des">
+                        <h2>LUCKJASMIN</h2>
+                        <h3>(IKEA)</h3>
+                        <h2>1,290 THB</h2>
+                    </div> 
+                 </div>
+            </div> 
+        </div>     -->

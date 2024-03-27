@@ -9,23 +9,23 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="homepage.css">
-        <script src="homepage.js"></script>
         <title>Furnihub</title>
     </head>
 
     <body>
-        <div class="header1">
+        <div class="first_part">
             <div class="user_icons">
-                <i class='bx bx-user'></i> 
+                <i class='bx bx-user'></i> <!-- User icon -->
             </div>
 
-                <h1><a href="/login.html">Register/Sign in</a></h1>
+            <h1 id="registerSignIn">Register/Sign in</h1>
                     
             <div class="menu_icons" id="menuIcon">
-                 <i class='bx bx-menu'></i>
+                 <i class='bx bx-menu'></i> <!-- Menu icon -->
              </div>
         </div>
 
+        <!-- Nav menu -->
         <nav class="navigation" id="navigation">
             <div class="menu-container">
                 <ul>
@@ -38,10 +38,11 @@
             </div>
     
             <button class="close_icons" id="closeIcon">
-                <i class='bx bx-x'></i>
+                <i class='bx bx-x'></i>  <!-- Close button for the nav menu -->
             </button>
         </nav>
             
+        <!-- Search bar -->
         <div class="search">
              <form>
                 <input type="text" placeholder="What are you looking for?">
@@ -51,13 +52,15 @@
             </form>
         </div>
 
-        <div class="header2">
+        <!-- Brand section -->
+        <div class="second_part">
             <h1>SHOP BY BRAND</h1>
          </div>
 
-        <div class="header2_1">
-            <div class="brand">
-                 <img src="ikea_logo.png">
+        <div class="second_part_1">
+            <div class="brand" id="ikea-brand"> 
+                <a href="ikea_products.html">
+                <img src="ikea_logo.png"></a> 
             </div>
             <div class="brand">
                 <img src="homepro_logo.png">
@@ -76,12 +79,13 @@
             </div>
         </div>
 
-        <div class="header3">
+        <!-- Best seller section -->
+        <div class="third_part">
             <h1>BEST SELLER</h1>
         </div>
 
         <div class="best_seller_container">
-            <div class="header3_1">
+            <div class="third_part_1">
                 <div class="best_seller">
                     <img src="malm.png">
                     <div class="best_seller_des">
@@ -138,7 +142,8 @@
             </div>
         </div>
 
+        <!-- Footer section --> 
         <footer class="footer"></footer>
-
+        <script src="homepage.js"></script>
     </body>
 </html>
