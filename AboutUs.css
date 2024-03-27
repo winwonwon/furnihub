@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;    
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.aboutus{
+    margin: 10px;
+}
+
+.aboutus h1{
+    color: #153147;
+    text-align: center;
+    margin: 20px;
+}
+
+.menubar{
+    text-align: right;
+    margin: 20px;
+    margin-left: 300px;
+    font-size: 23px;
+    transform: translateY(-10%);
+    transform: translateX(-1%);
+}
+
+.straight-line {
+    margin: 180px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 70%; /* Length of the line */
+    height: 1px; /* Thickness of the line */
+    background-color: black;
+}
+
+/* earn pic */
+.earn img{
+    position: relative;
+    justify-content: center; 
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    transform: translateX(91%);
+    top: 30px;
+}
+/* earn text */
+.earn p{
+    position: relative;
+    font-size: 22px;
+    margin: 0;
+    margin-left: 430px;
+    text-align: left;
+    top: -110px;
+}
+
+.pream img{
+    position: relative;
+    justify-content: center; 
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    transform: translateX(420%);
+    top: 30px;
+}
+
+.pream p{
+    position: relative;
+    font-size: 22px;
+    margin: 0;
+    margin-left: 430px;
+    text-align: left;
+    top: -110px;
+}
+
+.achi img{
+    position: relative;
+    justify-content: center; 
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    transform: translateX(91%);
+    top: 30px;
+}
+
+.achi p{
+    position: relative;
+    font-size: 22px;
+    margin: 0;
+    margin-left: 430px;
+    text-align: left;
+    top: -110px;
+}
+
+.pp img{
+    position: relative;
+    justify-content: center; 
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    transform: translateX(420%);
+    top: 30px;
+}
+
+.pp p{
+    position: relative;
+    font-size: 22px;
+    margin: 0;
+    margin-left: 430px;
+    text-align: left;
+    top: -110px;
+}
+
+.win img{
+    position: relative;
+    justify-content: center; 
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    transform: translateX(91%);
+    top: 30px;
+}
+
+.win p{
+    position: relative;
+    font-size: 22px;
+    margin: 0;
+    margin-left: 430px;
+    text-align: left;
+    top: -110px;
+}
