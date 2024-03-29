@@ -30,6 +30,7 @@
     position: absolute;
     left: 230px;
     top: 13%;
+    color: gray;
     font-size: 25px;
     transform: translateY(-40%); 
     transform: translateX(-50%);
@@ -60,7 +61,7 @@
     top: 30px;
     transform: translateX(45%);
 }
-
+/*text over*/
 .text_overlay {
     position: absolute;
     left: 240px; /* Adjust the horizontal position of the text */
@@ -100,6 +101,54 @@
 .overlay{
     position: absolute;
     left: 690px; 
+    color: white;
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.bath img{
+    position: relative;
+    justify-content: center;
+    margin-left: 40px; 
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 40px;
+    border-radius: 10px;
+    top: 30px;
+    transform: translateX(45%);
+}
+
+.overtext{
+    position: absolute;
+    left: 240px; 
+    color: white;
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.overr{
+    position: absolute;
+    left: 690px; 
+    color: white;
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.outdoor img{
+    position: relative;
+    justify-content: center;
+    margin-left: 40px; 
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 40px;
+    border-radius: 10px;
+    top: 30px;
+    transform: translateX(45%);
+}
+
+.overagain{
+    position: absolute;
+    left: 240px; 
     color: white;
     margin-top: 0px;
     font-size: 17px;
