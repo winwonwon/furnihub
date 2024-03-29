@@ -13,44 +13,50 @@
     </head>
 
     <body>
-        <div class="first_part">
-            <div class="user_icons">
-                <i class='bx bx-user'></i> <!-- User icon -->
+        <header>
+            <div class="first_part">
+                <div class="user_icons">
+                    <i class='bx bx-user'></i> <!-- User icon -->
+                </div>
+
+                <h1 id="registerSignIn">Register/Sign in</h1>
+                        
+                <div class="menu_icons" id="menuIcon">
+                    <i class='bx bx-menu'></i> <!-- Menu icon -->
+                </div>
             </div>
 
-            <h1 id="registerSignIn">Register/Sign in</h1>
-                    
-            <div class="menu_icons" id="menuIcon">
-                 <i class='bx bx-menu'></i> <!-- Menu icon -->
-             </div>
-        </div>
-
-        <!-- Nav menu -->
-        <nav class="navigation" id="navigation">
-            <div class="menu-container">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Browse</a></li>
-                    <li><a href="#">My Cart</a></li>
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">About Us</a></li>
-                </ul>
-            </div>
-    
-            <button class="close_icons" id="closeIcon">
-                <i class='bx bx-x'></i>  <!-- Close button for the nav menu -->
-            </button>
-        </nav>
-            
-        <!-- Search bar -->
-        <div class="search">
-             <form>
-                <input type="text" placeholder="What are you looking for?">
-                <button type="submit">
-                        <i class='bx bx-search'></i>
+            <!-- Nav menu -->
+            <nav class="navigation" id="navigation">
+                <div class="menu-container">
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="browse.html">Browse</a></li>
+                        <li><a href="mycart.html">My Cart</a></li>
+                        <li><a href="">My Account</a></li>
+                        <li><a href="AboutUs.html">About Us</a></li>
+                    </ul>
+                </div>
+        
+                <button class="close_icons" id="closeIcon">
+                    <i class='bx bx-x'></i>  <!-- Close button for the nav menu -->
                 </button>
-            </form>
-        </div>
+            </nav>
+        </header>
+            
+        <section class="home" id="home">
+            <div class="content">
+                <h3>Welcome to FurniHub!</h3>
+                <p>Discover a world of beautiful furniture that's perfect for everyone. 
+                    At FurniHub, we bring together a diverse range of brands, companies, 
+                    and manufacturers, all in one convenient place. With an extensive 
+                    selection of high-quality products available, we're here to ensure 
+                    that everyone finds furniture they truly love. Let's explore our 
+                    collections today and find the perfect pieces to match your style and needs.</p>
+                <a href="#" id="shopNowBtn" class="btn">Shop Now</a>
+            </div>
+        </section>
+
 
         <!-- Brand section -->
         <div class="second_part">
@@ -58,9 +64,8 @@
          </div>
 
         <div class="second_part_1">
-            <div class="brand" id="ikea-brand"> 
-                <a href="ikea_products.html">
-                <img src="ikea_logo.png"></a> 
+            <div class="brand"> 
+                <img src="ikea_logo.png">
             </div>
             <div class="brand">
                 <img src="homepro_logo.png">
@@ -147,3 +152,15 @@
         <script src="homepage.js"></script>
     </body>
 </html>
+
+
+
+        <!-- Search bar
+        <div class="search">
+             <form>
+                <input type="text" placeholder="What are you looking for?">
+                <button type="submit">
+                        <i class='bx bx-search'></i>
+                </button>
+            </form>
+        </div> -->

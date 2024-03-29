@@ -7,8 +7,15 @@
     scroll-behavior: smooth;
 }
 
-/* Setting bg color for the entire page */
+/* setting bg color for the entire page */
 body {
+    background: #f9f8f7;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
     background: #f9f8f7;
 }
 
@@ -17,6 +24,7 @@ body {
     align-items: center;
     margin: 20px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .first_part .user_icons i{
@@ -67,11 +75,12 @@ body {
 }
 
 .menu-container ul li a {
-    color: #EDEAE4; 
+    color: #f9f8f7; 
     font-size: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
 .menu-container ul li a:hover{
@@ -80,7 +89,7 @@ body {
 
 
 .close_icons i {
-    color: #EDEAE4;
+    color: #f9f8f7;
     position: absolute;
     top: 20px;
     left: 20px;
@@ -94,63 +103,58 @@ body {
     color: #ADB8BB;
 }
 
-/* Showing the nav menu when active */
+/* showing the nav menu when active */
 .navigation.active {
     right: 0px;
 }
 
-.search {
+.home {
     display: flex;
     align-items: center;
-    position: relative;
-    width: 100%;
-    max-width: 1370px; 
-    margin: 30px;
+    justify-content: center;
+    min-height: 600px;
+    margin-bottom: 30px;
+    background-image: url('hp.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content {
+    margin: 100px;
+    max-width: 700px;
+    text-align: center;
+}
+
+.home .content h3 {
+    font-size: 60px;
+    color: #f9f8f7;
+}
+
+.home .content p {
+    font-size: 16px;
+    color: #dadada;
+    font-weight: 400;
+}
+
+.home{
+    background-position: left;
+}
+
+.btn{
+    display: inline-block;
+    text-decoration: none;
     margin-top: 10px;
-}
-
-.search form {
-    display: flex;
-    align-items: center;
-    position: relative;
-    background: rgb(147, 146, 146);
-    border-radius: 25px;
-    width: 100%;
-    max-width: 1500px; 
-    height: 40px; 
-}
-
-.search input {
-    background: rgb(233, 231, 231);
-    color: rgb(158, 155, 155);
-    height: 100%;
-    width: 100%;
-    border-radius: 90px;
-    font-size: 20px;
-    font-weight: 300;
-    padding: 10px 70px;
-    border: none;
-}
-
-input:focus {
-    outline: none;
-}
-
-.search button {
-    background: none;
-    position: absolute;
-    border: none;
-    padding: 0px 25px;
+    border-radius: 30px;
+    background-color: #f9f8f7;
+    color: #153147;
+    padding: 10px 30px;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
 }
 
-.search button i {
-    color: rgb(158, 155, 155);
-    font-size: 30px;
-}
-
-.search button i:hover {
-    color: rgb(102, 102, 102);
+.btn:hover{
+    color: #ADB8BB;
 }
 
 .second_part{
@@ -240,14 +244,14 @@ input:focus {
     max-height:100%; 
 }
 
-/* Adjusts the margins to create spacing around the image and sets a max width of 250 px. */
+/* adjusts the margins to create spacing around the image and sets a max width of 250 px. */
 .best_seller img[src="meltorp.png"] {
     margin-top: 50px;
     margin-bottom: 20px;
     max-width: 250px; 
 }
 
-/* Sets font size, aligns the text to the left, and adds 5 px of padding around the container.*/
+/* sets font size, aligns the text to the left, and adds 5 px of padding around the container.*/
 .best_seller_des {
     font-size: 14px;
     text-align: left;
@@ -265,3 +269,59 @@ input:focus {
     padding: 22px;
 }
 
+
+
+
+/* .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 1370px; 
+    margin: 30px;
+    margin-top: 10px;
+}
+
+.search form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: rgb(147, 146, 146);
+    border-radius: 25px;
+    width: 100%;
+    max-width: 1500px; 
+    height: 40px; 
+}
+
+.search input {
+    background: rgb(233, 231, 231);
+    color: rgb(158, 155, 155);
+    height: 100%;
+    width: 100%;
+    border-radius: 90px;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 10px 70px;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search button {
+    background: none;
+    position: absolute;
+    border: none;
+    padding: 0px 25px;
+    cursor: pointer;
+}
+
+.search button i {
+    color: rgb(158, 155, 155);
+    font-size: 30px;
+}
+
+.search button i:hover {
+    color: rgb(102, 102, 102);
+} */
