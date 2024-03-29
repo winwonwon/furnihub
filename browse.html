@@ -9,14 +9,32 @@
 </head>
 
 <body>
-    <div class="menubar">
+    <div class="menubar" id="menubar">
         <i class='bx bx-menu'></i>
     </div>
 
+    <nav class="navigation" id="navigation">
+        <div class="menu-container">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">My Cart</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+
+        <button class="close_icons" id="closeIcon">
+            <i class='bx bx-x'></i>  <!-- Close button for the nav menu -->
+        </button>
+    </nav>
+
     <div class="search">
         <form>
-           <input type="text" placeholder="      What are you looking for?(Search by product name, type, brand)">
+           <input type="text" placeholder="What are you looking for?(Search by product name, type, brand)">
+           <button type="submit">
            <i class='bx bx-search' ></i>
+           </button>
        </form>
    </div>
 
@@ -57,5 +75,6 @@
         <img src="outdoor.jpg">
             <div class="overagain">Outdoor</div>
     </div>
+    <script src="browse.js"></script>
 </body>
 </html>
