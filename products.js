@@ -1,31 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const filterIcon = document.querySelector(".filter_icons i");
-    const filterForm = document.querySelector(".filter_form");
-    const overlay = document.querySelector(".overlay");
-    const body = document.body;
-    const productContainer = document.querySelector(".ikea");
+document.addEventListener("DOMContentLoaded", function () {
+    const productContainer = document.querySelector(".product");
 
-    // Function to toggle filter form and overlay
-    function toggleFilterForm() {
-        if (filterForm.style.display === "block") {
-            filterForm.style.display = "none";
-            overlay.style.display = "none";
-        } else {
-            filterForm.style.display = "block";
-            overlay.style.display = "block";
-        }
-        body.classList.toggle("filter_active");
-    }
+    // go to browse page when back icon is clicked
+    document.getElementById("backIcon").addEventListener("click", function () {
+        window.location.href = "browse.html";
+    });
 
-    // Event listener to toggle filter form and overlay when filter icon is clicked
-    filterIcon.addEventListener("click", toggleFilterForm);
-
-    // Redirect to homepage when back icon is clicked
-    document.getElementById("backIcon").addEventListener("click", function() {
-        window.location.href = "homepage.html";
-    });  
-
-    // Define an array of products
+    // define an array of products
     const products = [
         {
             id: 108,
@@ -87,10 +68,10 @@ document.addEventListener("DOMContentLoaded", function() {
             price: 20970,
             color: "White"
         }
-        // Add more products following the same structure
+        // add more products following the same structure
     ];
 
-    // Function to generate HTML for each product
+    // function to generate HTML for each product
     function generateProductHTML(product) {
         return `
             <div class="products">
@@ -104,18 +85,18 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
     }
 
-    // Function to display products on the page
+    // function to display products on the page
     function displayProducts() {
-        // Clear existing products
+        // clear existing products
         productContainer.innerHTML = '';
 
-        // Generate HTML for each product and append to the container
+        // generate HTML for each product and append to the container
         products.forEach(product => {
             const productHTML = generateProductHTML(product);
             productContainer.insertAdjacentHTML('beforeend', productHTML);
         });
     }
 
-    // Display products when the page loads initially
+    // display products when the page loads initially
     displayProducts();
 });
