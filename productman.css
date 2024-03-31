@@ -170,6 +170,22 @@ tr:nth-child(even) td {
     max-width: 300px; /* Optionally, set a maximum width */
 }
 
+#add-product-popup input {
+  border: none; /* Remove the border */
+    outline: none; /* Remove the outline */
+    background-color: transparent; /* Make the background transparent */
+    border-bottom: 1px solid black; /* Add underline */
+    padding-bottom: 0px;
+    width: 20%; /* Set the width of the input field */
+    max-width: 300px; /* Optionally, set a maximum width */
+}
+
+#open-add-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
 @media only screen and (max-width: 768px) {
   .ikea {
       min-width: 400px; /* Set a minimum width for the container */
