@@ -173,12 +173,6 @@ document.getElementById("cancel-delete").addEventListener("click", function () {
     hideDeletePopup();
 });
 
-
-document.getElementById("cancel-delete").addEventListener("click", function() {
-    // Hide the delete confirmation popup
-    hideDeletePopup();
-});
-
 // Function to show the delete confirmation popup
 function showDeletePopup(productId) {
     const deletePopup = document.getElementById("delete-popup");
