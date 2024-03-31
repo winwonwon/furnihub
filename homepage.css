@@ -201,7 +201,7 @@ header {
     position: absolute; 
 }
 
-/* For these images, sets a max width and height of 200 px, ensuring they don't exceed these dimensions.*/
+/* sets a max width and height of 200 px, ensuring they don't exceed these dimensions.*/
 .brand img[src="ikea_logo.png"], .brand img[src="homepro_logo.png"], .brand img[src="index.png"] {
     max-width: 200px; 
     max-height: 200px; 
@@ -244,7 +244,7 @@ header {
     max-height:100%; 
 }
 
-/* adjusts the margins to create spacing around the image and sets a max width of 250 px. */
+/* create spacing around the image and sets a max width of 250 px. */
 .best_seller img[src="meltorp.png"] {
     margin-top: 50px;
     margin-bottom: 20px;
@@ -258,70 +258,13 @@ header {
     padding: 5px;
 }
 
-/* Applies a shadow when hovered over best seller.*/
+/* applies a shadow when hovered over best seller.*/
 .best_seller:hover{
     box-shadow: 0 3px 6px rgb(79, 79, 79);
 }
 
-/* Styles the footer section of the webpage by sets the bg*/
+/* styles the footer section of the webpage by sets the bg*/
 .footer {
     background-color: #EDEAE4; 
     padding: 22px;
 }
-
-
-
-
-/* .search {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    max-width: 1370px; 
-    margin: 30px;
-    margin-top: 10px;
-}
-
-.search form {
-    display: flex;
-    align-items: center;
-    position: relative;
-    background: rgb(147, 146, 146);
-    border-radius: 25px;
-    width: 100%;
-    max-width: 1500px; 
-    height: 40px; 
-}
-
-.search input {
-    background: rgb(233, 231, 231);
-    color: rgb(158, 155, 155);
-    height: 100%;
-    width: 100%;
-    border-radius: 90px;
-    font-size: 20px;
-    font-weight: 300;
-    padding: 10px 70px;
-    border: none;
-}
-
-input:focus {
-    outline: none;
-}
-
-.search button {
-    background: none;
-    position: absolute;
-    border: none;
-    padding: 0px 25px;
-    cursor: pointer;
-}
-
-.search button i {
-    color: rgb(158, 155, 155);
-    font-size: 30px;
-}
-
-.search button i:hover {
-    color: rgb(102, 102, 102);
-} */
