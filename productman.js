@@ -305,6 +305,136 @@ function attachOpenAddPopupButtonListener() {
     openAddPopupButton.addEventListener("click", showAddPopup);
 }
 
+// image add
+document.addEventListener("DOMContentLoaded", function() {
+    const fileInput = document.getElementById("add-images");
+    const dropArea = document.getElementById("drop-area");
+    const fileNameInput = document.getElementById("add-file-name");
+
+    // Event listener for the choose file button
+    document.getElementById("add-file-btn").addEventListener("click", function() {
+        fileInput.click(); // Trigger click event on file input
+    });
+
+    // Event listener for file input change
+    fileInput.addEventListener("change", function() {
+        const files = fileInput.files;
+        if (files.length > 0) {
+            fileNameInput.value = files[0].name; // Display the selected file name
+        }
+    });
+
+    // Prevent default behavior for drag events
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop area when a file is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    // Remove highlighting when a file is dragged out of the drop area
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle file drop
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    // Prevent default behavior for drag events
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Highlight drop area when a file is dragged over it
+    function highlight() {
+        dropArea.classList.add('highlight');
+    }
+
+    // Remove highlighting when a file is dragged out of the drop area
+    function unhighlight() {
+        dropArea.classList.remove('highlight');
+    }
+
+    // Handle file drop
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files; // Set the dropped files to the file input
+        if (files.length > 0) {
+            fileNameInput.value = files[0].name; // Display the selected file name
+        }
+    }
+});
+
+// image edit
+document.addEventListener("DOMContentLoaded", function() {
+    const fileInput = document.getElementById("edit-images");
+    const dropArea = document.getElementById("drop-area");
+    const fileNameInput = document.getElementById("edit-file-name");
+
+    // Event listener for the choose file button
+    document.getElementById("edit-file-btn").addEventListener("click", function() {
+        fileInput.click(); // Trigger click event on file input
+    });
+
+    // Event listener for file input change
+    fileInput.addEventListener("change", function() {
+        const files = fileInput.files;
+        if (files.length > 0) {
+            fileNameInput.value = files[0].name; // Display the selected file name
+        }
+    });
+
+    // Prevent default behavior for drag events
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop area when a file is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    // Remove highlighting when a file is dragged out of the drop area
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle file drop
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    // Prevent default behavior for drag events
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Highlight drop area when a file is dragged over it
+    function highlight() {
+        dropArea.classList.add('highlight');
+    }
+
+    // Remove highlighting when a file is dragged out of the drop area
+    function unhighlight() {
+        dropArea.classList.remove('highlight');
+    }
+
+    // Handle file drop
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files; // Set the dropped files to the file input
+        if (files.length > 0) {
+            fileNameInput.value = files[0].name; // Display the selected file name
+        }
+    }
+});
+
 // Call functions to display products and attach event listeners
 displayProducts(products);
 attachEditButtonListeners();

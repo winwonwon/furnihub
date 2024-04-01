@@ -61,6 +61,14 @@
           <input type="number" id="add-stock" required><br>
           <label for="add-price">Price:</label>
           <input type="number" id="add-price" step="0.01" required><br>
+          <div id="file-upload-container">
+            <label for="add-images">Upload Image:</label>
+            <input type="text" id="add-file-name" readonly>
+            <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; margin-left: 20px; margin-top: 10px; cursor: pointer; width: 50%;">
+                Drag & Drop files here or <input type="file" id="add-images" accept="image/*" style="display: none;">
+                <button type="button" id="add-file-btn">Choose File</button>
+            </div>
+          </div>
           <button type="button" id="add-save-btn">Save</button>
           <button type="button" id="add-close-btn">Close</button>
       </fieldset>
@@ -82,6 +90,14 @@
         <input type="number" id="stock" required><br>
         <label for="price">Price:</label>
         <input type="number" id="price" step="0.01" required><br>
+        <div id="file-upload-container">
+          <label for="edit-images">Change Image:</label>
+          <input type="text" id="edit-file-name" readonly>
+          <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; margin-left: 20px; margin-top: 10px; cursor: pointer; width: 50%;">
+              Drag & Drop files here or <input type="file" id="edit-images" accept="image/*" style="display: none;">
+              <button type="button" id="edit-file-btn">Choose File</button>
+          </div>
+        </div>
         <button type="button" id="save-btn">Save</button>
         <button type="button" id="close-btn">Close</button>
       </fieldset>
