@@ -1,149 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="homepage.css">
-        <title>Furnihub</title>
-    </head>
 
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="homepage.css">
+    <title>Furnihub</title>
+</head>
+
+<body>
+    <header>
         <div class="first_part">
             <div class="user_icons">
-                <i class='bx bx-user'></i> <!-- User icon -->
+                <i class='bx bx-user'></i> <!-- user icon -->
             </div>
 
             <h1 id="registerSignIn">Register/Sign in</h1>
-                    
+
             <div class="menu_icons" id="menuIcon">
-                 <i class='bx bx-menu'></i> <!-- Menu icon -->
-             </div>
+                <i class='bx bx-menu'></i> <!-- menu icon -->
+            </div>
         </div>
 
-        <!-- Nav menu -->
+        <!-- nav menu -->
         <nav class="navigation" id="navigation">
             <div class="menu-container">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Browse</a></li>
-                    <li><a href="#">My Cart</a></li>
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="browse.html">Browse</a></li>
+                    <li><a href="mycart.html">My Cart</a></li>
+                    <li><a href="">My Account</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
                 </ul>
             </div>
-    
+
             <button class="close_icons" id="closeIcon">
-                <i class='bx bx-x'></i>  <!-- Close button for the nav menu -->
+                <i class='bx bx-x'></i> <!-- close button for the nav menu -->
             </button>
         </nav>
-            
-        <!-- Search bar -->
-        <div class="search">
-             <form>
-                <input type="text" placeholder="What are you looking for?">
-                <button type="submit">
-                        <i class='bx bx-search'></i>
-                </button>
-            </form>
+    </header>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Welcome to FurniHub!</h3>
+            <p>Discover a world of beautiful furniture that's perfect for everyone.
+                At FurniHub, we bring together a diverse range of brands, companies,
+                and manufacturers, all in one convenient place. With an extensive
+                selection of high-quality products available, we're here to ensure
+                that everyone finds furniture they truly love. Let's explore our
+                collections today and find the perfect pieces to match your style and needs.</p>
+            <a href="#" id="shopNowBtn" class="btn">Shop Now</a>
         </div>
+    </section>
 
-        <!-- Brand section -->
-        <div class="second_part">
-            <h1>SHOP BY BRAND</h1>
-         </div>
 
-        <div class="second_part_1">
-            <div class="brand" id="ikea-brand"> 
-                <a href="ikea_products.html">
-                <img src="ikea_logo.png"></a> 
+    <!-- brand section -->
+    <div class="second_part">
+        <h1>SHOP BY BRAND</h1>
+    </div>
+
+    <div class="second_part_1">
+        <div class="brand">
+            <img src="ikea_logo.png">
+        </div>
+        <div class="brand">
+            <img src="homepro_logo.png">
+        </div>
+        <div class="brand">
+            <img src="koncept.png">
+        </div>
+        <div class="brand">
+            <img src="sb.png">
+        </div>
+        <div class="brand">
+            <img src="Thai-Wassadu.png">
+        </div>
+        <div class="brand">
+            <img src="index.png">
+        </div>
+    </div>
+
+    <!-- Best seller section -->
+    <div class="third_part">
+        <h1>BEST SELLER</h1>
+    </div>
+
+    <div class="best_seller_container">
+        <div class="third_part_1">
+            <div class="best_seller">
+                <img src="malm.png">
+                <div class="best_seller_des">
+                    <h2>MALM</h2>
+                    <h3>(IKEA)</h3>
+                    <h2>9,990 THB</h2>
+                </div>
             </div>
-            <div class="brand">
-                <img src="homepro_logo.png">
+
+            <div class="best_seller">
+                <img src="anastasia.png">
+                <div class="best_seller_des">
+                    <h2>ANASTASIA</h2>
+                    <h3>(Index Livingmall)</h3>
+                    <h2>54,900 THB</h2>
+                </div>
             </div>
-            <div class="brand">
-                 <img src="koncept.png">
+
+            <div class="best_seller">
+                <img src="nikko.png">
+                <div class="best_seller_des">
+                    <h2>NIKKO</h2>
+                    <h3>(Koncept)</h3>
+                    <h2>5,760 THB</h2>
+                </div>
             </div>
-            <div class="brand">
-                 <img src="sb.png">
+
+            <div class="best_seller">
+                <img src="meltorp.png">
+                <div class="best_seller_des">
+                    <h2>MELTORP</h2>
+                    <h3>(IKEA)</h3>
+                    <h2>5,190 THB</h2>
+                </div>
             </div>
-            <div class="brand">
-                <img src="Thai-Wassadu.png">
+
+            <div class="best_seller">
+                <img src="extreme.png">
+                <div class="best_seller_des">
+                    <h2>EXTREME LIVING</h2>
+                    <h3>(Index Livingmall)</h3>
+                    <h2>1,603 THB</h2>
+                </div>
             </div>
-            <div class="brand">
-                <img src="index.png">
+
+            <div class="best_seller">
+                <img src="luckjasmin.png">
+                <div class="best_seller_des">
+                    <h2>LUCKJASMIN</h2>
+                    <h3>(IKEA)</h3>
+                    <h2>1,290 THB</h2>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Best seller section -->
-        <div class="third_part">
-            <h1>BEST SELLER</h1>
-        </div>
+    <!-- footer section -->
+    <footer class="footer"></footer>
+    <script src="homepage.js"></script>
+</body>
 
-        <div class="best_seller_container">
-            <div class="third_part_1">
-                <div class="best_seller">
-                    <img src="malm.png">
-                    <div class="best_seller_des">
-                        <h2>MALM</h2>
-                        <h3>(IKEA)</h3>
-                        <h2>9,990 THB</h2>
-                    </div>
-                </div>
-
-                <div class="best_seller">
-                    <img src="anastasia.png">
-                    <div class="best_seller_des">
-                        <h2>ANASTASIA</h2>
-                        <h3>(Index Livingmall)</h3>
-                        <h2>54,900 THB</h2>
-                    </div>
-                </div>
-
-                <div class="best_seller">
-                    <img src="nikko.png">
-                    <div class="best_seller_des">
-                        <h2>NIKKO</h2>
-                        <h3>(Koncept)</h3>
-                        <h2>5,760 THB</h2>
-                    </div>
-                </div>
-
-                <div class="best_seller">
-                    <img src="meltorp.png">
-                    <div class="best_seller_des">
-                        <h2>MELTORP</h2>
-                        <h3>(IKEA)</h3>
-                        <h2>5,190 THB</h2>
-                    </div>
-                </div>
-
-                <div class="best_seller">
-                    <img src="extreme.png">
-                    <div class="best_seller_des">
-                        <h2>EXTREME LIVING</h2>
-                        <h3>(Index Livingmall)</h3>
-                        <h2>1,603 THB</h2>
-                    </div>
-                </div>
-
-                <div class="best_seller">
-                    <img src="luckjasmin.png">
-                    <div class="best_seller_des">
-                        <h2>LUCKJASMIN</h2>
-                        <h3>(IKEA)</h3>
-                        <h2>1,290 THB</h2>
-                    </div>
-                 </div>
-            </div>
-        </div>
-
-        <!-- Footer section --> 
-        <footer class="footer"></footer>
-        <script src="homepage.js"></script>
-    </body>
 </html>

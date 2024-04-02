@@ -1,31 +1,36 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Get elements from the DOM
+    // get elements from the DOM
     var menuIcon = document.getElementById("menuIcon");
     var navigation = document.getElementById("navigation");
     var closeIcon = document.getElementById("closeIcon");
     var registerSignIn = document.getElementById("registerSignIn");
-    var ikeaBrand = document.getElementById("ikea-brand");
 
-    // Toggle nav menu when menu icon is clicked
+    // toggle nav menu when menu icon is clicked
     menuIcon.addEventListener("click", function() {
         navigation.classList.toggle("active");
     });
 
-    // Close nav menu when close icon is clicked
+    // close nav menu when close icon is clicked
     closeIcon.addEventListener("click", function() {
         navigation.classList.remove("active");
     });
 
-    // Redirect to login page when register/sign-in link is clicked
-    registerSignIn.addEventListener("click", function() {
+    // redirect to login page when register/sign-in link is clicked
+    registerSignIn.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default behavior of the anchor tag
         window.location.href = "login.html";
     });
 
-    ikeaBrand.addEventListener("click", function(event) {
-        // Prevent the default behavior of the anchor tag
-        event.preventDefault();
-        
-        // Navigate to the product.html page
-        window.location.href = "ikea_products.html";
+    // get all the menu items
+    var menuItems = document.querySelectorAll(".navigation ul li a");
+
+    // add click event listener to each menu item
+    menuItems.forEach(function(item) {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            // get the href attribute of the clicked menu item
+            var page = this.getAttribute("href");
+            window.location.href = page;
+        });
     });
 });
