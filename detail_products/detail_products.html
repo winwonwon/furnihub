@@ -19,37 +19,27 @@
         <div class="back_icons" id="backIcon">
             <h1>&lt;Back</h1>
         </div>
-        <h1>More Detail</h1>
+        <h1>Product Detail</h1>
     </header>
 
     <div class="container">
         <div class="image-container">
-            <div class="img_product">
-                <img src="vimle.png">
+            <div class="img_product main-img">
+                <img id="mainImage" src="">
             </div>
-            <div class="img_product">
-                <img src="110vimle_dt1.png">
-            </div>
-            <div class="img_product">
-                <img src="110vimle_dt2.png">
-            </div>
-            <div class="img_product">
-                <img src="110vimle_dt3.png">
+            <div class="small-images">
+                <!-- Small images will be added dynamically here -->
             </div>
         </div>
 
         <div class="details-container">
-            <p>Product ID : 110</p>
-            <p>Sofa/Living Room</p>
-            <h1>VIMLE</h1>
-            <h2>(IKEA)</h2>
-            <h1> 25,950 THB</h1>
-            <h3>Color</h3>
-            <p>Beige</p>
-            <h3>Product Details</h3>
-            <p>This soft sofa will have a long life since the seat cushions are filled with high resilience foam that
-                gives good
-                support for your body and quickly regains its original shape when you get up.</p>
+            <!-- Dynamic product details will be populated here -->
+            <p id="productID"></p>
+            <h1 id="productName"></h1>
+            <h2 id="productBrand"></h2>
+            <h1 id="productPrice"></h1>
+            <h3 id="productColor"></h3>
+            <p id="productDescription"></p>
             <div class="quantity-container">
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" value="1" min="1">
@@ -58,6 +48,9 @@
         </div>
     </div>
 
+    <!-- footer section -->
+    <footer class="footer"></footer>
+    <script src="homepage.js"></script>
     <script src="detail_products.js"></script>
 </body>
 

@@ -1,12 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const productContainer = document.querySelector(".product");
 
-    // go to browse page when back icon is clicked
+    const body = document.body;
+    const productContainer = document.querySelector(".product");
     document.getElementById("backIcon").addEventListener("click", function () {
-        window.location.href = "browse.html";
+        window.location.href = "../browse.html";
     });
 
-    // define an array of products
     const products = [
         {
             id: 108,
@@ -19,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             image: "borgeby.png",
             price: 2590,
             color: "Birch veneer"
-        },
-        {
+        }, {
             id: 109,
             name: "BORGEBY",
             description: "BORGEBY storage table has an elegant, simple and stylish design with a harmonious and balanced expression. The rounded airy shape, smooth surface and natural material make the table suitable for many different living situations and interior styles.",
@@ -74,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // function to generate HTML for each product
     function generateProductHTML(product) {
         return `
-            <div class="products">
+            <div class="products" data-id="${product.id}">
                 <img src="${product.image}">
                 <div class="products_des">
                     <h2>${product.name}</h2>
@@ -94,6 +92,19 @@ document.addEventListener("DOMContentLoaded", function () {
         products.forEach(product => {
             const productHTML = generateProductHTML(product);
             productContainer.insertAdjacentHTML('beforeend', productHTML);
+        });
+
+        // add event listener to each product item
+        const productItems = document.querySelectorAll('.products');
+        productItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const productId = parseInt(item.getAttribute('data-id'));
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    // redirect to detail page passing product id
+                    window.location.href = `../detail_products/detail_products.html?id=${productId}`;
+                }
+            });
         });
     }
 
