@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // get elements from the DOM
     var menuIcon = document.getElementById("menuIcon");
     var navigation = document.getElementById("navigation");
@@ -6,31 +6,30 @@ document.addEventListener("DOMContentLoaded", function() {
     var registerSignIn = document.getElementById("registerSignIn");
 
     // toggle nav menu when menu icon is clicked
-    menuIcon.addEventListener("click", function() {
+    menuIcon.addEventListener("click", function () {
         navigation.classList.toggle("active");
     });
 
     // close nav menu when close icon is clicked
-    closeIcon.addEventListener("click", function() {
+    closeIcon.addEventListener("click", function () {
         navigation.classList.remove("active");
     });
 
     // redirect to login page when register/sign-in link is clicked
-    registerSignIn.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default behavior of the anchor tag
-        window.location.href = "login.html";
+    registerSignIn.addEventListener("click", function (event) {
+        event.preventDefault(); // prevent the default behavior of the anchor tag
+        window.location.href = "../login.html";
     });
 
     // get all the menu items
     var menuItems = document.querySelectorAll(".navigation ul li a");
 
     // add click event listener to each menu item
-    menuItems.forEach(function(item) {
-        item.addEventListener("click", function(event) {
-            event.preventDefault();
+    menuItems.forEach(function (item) {
+        item.addEventListener("click", function (event) {
             // get the href attribute of the clicked menu item
             var page = this.getAttribute("href");
-            window.location.href = page;
+            window.location.href = "../" + page; 
         });
     });
 });
