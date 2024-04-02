@@ -14,6 +14,4 @@ document.addEventListener("DOMContentLoaded", function() {
     closeIcon.addEventListener("click", function() {
         navigation.classList.remove("active");
     });
-        
-      
 });
