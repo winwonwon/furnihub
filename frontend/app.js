@@ -8,7 +8,6 @@ const router = express.Router();
 app.use("/", router);
 
 app.use("/", express.static(path.join(__dirname, "public")))
-// app.use("/", express.static(path.join(__dirname, "public", "homepage")))
 
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "homepage", "homepage.html"))
