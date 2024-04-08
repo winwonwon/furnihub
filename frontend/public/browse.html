@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap">
     <link rel="stylesheet" href="browse.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Browse</title>
 </head>
 
 <body>
+
     <div class="menubar" id="menubar">
         <i class='bx bx-menu'></i>
     </div>
@@ -16,65 +22,73 @@
     <nav class="navigation" id="navigation">
         <div class="menu-container">
             <ul>
-                <a href="homepage.html">Home</a></li>
-                <li><a href="browse.html">Browse</a></li>
-                <li><a href="mycart.html">My Cart</a></li>
-                <li><a href="">My Account</a></li>
-                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/browse">Browse</a></li>
+                <li><a href="/mycart">My Cart</a></li>
+                <li><a href="/account">My Account</a></li>
+                <li><a href="/about-us">About Us</a></li>
             </ul>
         </div>
 
         <button class="close_icons" id="closeIcon">
-            <i class='bx bx-x'></i>  <!-- Close button for the nav menu -->
+            <i class='bx bx-x'></i> <!-- Close button for the nav menu -->
         </button>
     </nav>
 
     <div class="search">
         <form>
-           <input type="text" placeholder="What are you looking for?(Search by product name, type, brand)">
-           <button type="submit">
-           <i class='bx bx-search' ></i>
-           </button>
-       </form>
-   </div>
+            <input type="text" placeholder="What are you looking for?(Search by product name, type, brand)">
+            <button type="submit">
+                <i class='bx bx-search'></i>
+            </button>
 
-    <div class="searchtwo">
-        <i class='bx bx-scan'></i>
+            <div class="searchtwo">
+                <i class='bx bx-scan'></i>
+            </div>
+
+        </form>
     </div>
 
-    <div class="head">
-        <h1>ROOM CATEGORIES</h1>
-    </div>
+    <div class="room">
+        <div class="head">
+            <h1>ROOM CATEGORIES</h1>
+        </div>
 
-    <div class="living">
-        <img src="https://drive.google.com/thumbnail?id=1JQZjwy5YMXVuCTyLz7phui2bufN1ltKR">
+        <div class="living">
+            <img src="https://drive.google.com/thumbnail?id=1JQZjwy5YMXVuCTyLz7phui2bufN1ltKR">
             <div class="text_overlay">Living Room</div>
 
             <img src="https://drive.google.com/thumbnail?id=11AfTKKKfvXw8Vjkn7THSIz__n-FhAhvQ">
-            <div class="textoverbed">Bed Room</div>
-    </div>
-    
-    <div class="kitchen">
-        <img src="https://drive.google.com/thumbnail?id=1IiSovuo83JwrOfuhZX4XbIpCFNC_jms9">
+            <div class="textoverbed">Bedroom</div>
+        </div>
+
+        <div class="kitchen">
+            <img src="https://drive.google.com/thumbnail?id=1IiSovuo83JwrOfuhZX4XbIpCFNC_jms9">
             <div class="over">Kitchen</div>
 
-        <img src="https://drive.google.com/thumbnail?id=1Oj0Q6VGipy4BOJPYatckX9d3XffR9Zja">
+            <img src="https://drive.google.com/thumbnail?id=1Oj0Q6VGipy4BOJPYatckX9d3XffR9Zja">
             <div class="overlay">Dining Room</div>
-    </div>
-    
-    <div class="bath">
-        <img src="https://drive.google.com/thumbnail?id=1KNYLTsn4V_PjEuk37WDWQkTIYgL6z07P">
-            <div class="overtext">Bath Room</div>
+        </div>
 
-        <img src="https://drive.google.com/thumbnail?id=1o8xNiz2_eIhFvkSqMoucX95CAlxIfYVB">
+        <div class="bath">
+            <img src="https://drive.google.com/thumbnail?id=1KNYLTsn4V_PjEuk37WDWQkTIYgL6z07P">
+            <div class="overtext">Bathroom</div>
+
+            <img src="https://drive.google.com/thumbnail?id=1o8xNiz2_eIhFvkSqMoucX95CAlxIfYVB">
             <div class="overr">Home Office</div>
+        </div>
+
+        <div class="outdoor">
+            <img src="https://drive.google.com/thumbnail?id=1FMKqxrv9hxfsx6Yp8QXroh59rpgkm7B_">
+            <div class="overagain">Outdoor</div>
+        </div>
     </div>
 
-    <div class="outdoor">
-        <img src="https://drive.google.com/thumbnail?id=1FMKqxrv9hxfsx6Yp8QXroh59rpgkm7B_">
-            <div class="overagain">Outdoor</div>
-    </div>
+    <!-- footer section -->
+    <footer class="footer"></footer>
+
     <script src="browse.js"></script>
 
 </body>
+
 </html>
