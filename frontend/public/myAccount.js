@@ -13,4 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
     closeIcon.addEventListener("click", function () {
         navigation.classList.remove("active");
     });
+
+    document.getElementById("logout").addEventListener("click", function() {
+        // Perform logout actions here, such as clearing session data
+        // Redirect to the homepage
+        window.location.href = "/";
+    });
+    
 });
