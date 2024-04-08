@@ -16,8 +16,8 @@ img{
      display: flex;
      justify-content: center;
      align-items: center; 
-     max-width: 500px;
-     max-height: 200px;
+     max-width: 330px; /*500 200*/
+     height: 220px;
 }
       
 

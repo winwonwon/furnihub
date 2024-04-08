@@ -5,15 +5,15 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.myclass{
-    margin: 20px; 
+.mycart{
+    margin: 0px; 
 
 }
 
-.mycart h2{
+.mycart h1{
     color: #153147;
     text-align: center;
-    margin: 20px;
+    margin: 30px;
 }
 
 .menubar{
@@ -97,8 +97,9 @@
     height: 1px; /* Thickness of the line */
     background-color: black;
 }
-  
-img{
+
+/*pic product 1*/
+.cartitem img{
     display: flex;
     justify-content: center; 
     max-width: 800px;
@@ -117,7 +118,7 @@ i{
     transform: translateY(-20%);
     font-size: 20px;
 }
-
+/*pic product2*/
 .producttable img{
     display: flex;
     justify-content: center; 
@@ -130,7 +131,7 @@ i{
     justify-content: left;
     margin-left: 150px;
 }
-
+/*detail of product1*/
 .mycart h4{
     font-size: 23px;
     margin: 0;
@@ -164,13 +165,24 @@ i{
     margin-top: -150px;
     margin-left: 301px;
 }
-
+/*text color num*/
 .text-box, .number-box {
     width: calc(50% - 1px); /* กำหนดความกว้างของแต่ละฝั่ง โดยลบระยะห่างระหว่างฝั่งออก */
     padding: 6px;
     border: 1px solid black;
     box-sizing: border-box;
-  }
+}
+
+.secondbox, .half-box{
+    flex: 1; /* This will make the boxes take up equal space */
+    padding: 6px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    /*width: calc(50% - 1px); /* กำหนดความกว้างของแต่ละฝั่ง โดยลบระยะห่างระหว่างฝั่งออก 
+    padding: 6px;
+    border: 1px solid black;
+    box-sizing: border-box;*/
+}
 
 .containertwo {
     display: flex;
