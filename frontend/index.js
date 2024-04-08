@@ -45,6 +45,10 @@ router.get("/user-man", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "userman.html"))
 })
 
+router.get("/account", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "myAccount.html"))
+})
+
 app.listen(process.env.PORT, () => {
     console.log(`Listening to port: ${process.env.PORT}`);
 });
