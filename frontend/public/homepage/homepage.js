@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var menuItems = document.querySelectorAll(".navigation ul li a");
 
     // add click event listener to each menu item
-    menuItems.forEach(function (item) {
-        item.addEventListener("click", function (event) {
-            event.preventDefault();
-            // get the href attribute of the clicked menu item
-            var page = this.getAttribute("href");
-            window.location.href = "../" + page; 
-        });
-    });
+    // menuItems.forEach(function (item) {
+    //     item.addEventListener("click", function (event) {
+    //         event.preventDefault();
+    //         // get the href attribute of the clicked menu item
+    //         var page = this.getAttribute("href");
+    //         window.location.href = "../" + page; 
+    //     });
+    // });
 });

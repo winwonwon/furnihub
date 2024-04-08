@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Desk",
             room: "Living room",
             brand: "IKEA",
-            images: ["borgeby.png", "108borgeby_dt1.png", "108borgeby_dt2.png", "108-109borgeby.png"],
+            images: ["https://drive.google.com/thumbnail?id=1o-63BTaxmSOVdNvbGTeHSNEe0_tMrmhL",
+            "https://drive.google.com/thumbnail?id=1aeVkjCThd3yCta7Rlndw4bdddj8jcoZx", 
+            "https://drive.google.com/thumbnail?id=1Yjuz2r6dWB2-sfDKI9mNAR7FyawMmee3", 
+            "https://drive.google.com/thumbnail?id=1uZIFvxzps8B_TXxBmmaUPQLzDla9LYdH"],
             price: 2590,
             color: "Birch veneer"
         },
@@ -30,7 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Desk",
             room: "Living room",
             brand: "IKEA",
-            images: ["borgeby_b.png", "109borgeby_dt1.png", "109borgeby_dt2.png", "108-109borgeby.png"],
+            images: [
+                "https://drive.google.com/thumbnail?id=1iPsqIUjfTFIdPt5Q2Aj5-7zDXCkkEGZw",
+                "https://drive.google.com/thumbnail?id=13y-HzrRZLq_yVvtZcXBxsUb3PIjk3LN4",
+                "https://drive.google.com/thumbnail?id=1pcjv02mSx5EJGfwS9ar3cVsLAlazY3tg",
+                "https://drive.google.com/thumbnail?id=1pyp_sGqXMtUW_vgKYVUaTZfel_IReyr4"
+            ],
             price: 2590,
             color: "Black"
         },
@@ -42,7 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Sofa",
             room: "Living room",
             brand: "IKEA",
-            images: ["vimle.png", "110vimle_dt1.png", "110vimle_dt2.png", "110vimle_dt3.png"],
+            
+            images: [ "https://drive.google.com/thumbnail?id=1WbN6OxvP-T6EPWfumFdDk_jDm7c5GmLB",
+            "https://drive.google.com/thumbnail?id=1ZRU7naGFlsTLHi1dmD7uTJwLniG6foLh",
+            "https://drive.google.com/thumbnail?id=1U21nT1-dxz0PQq5AWENJQiOOJTR8O88j", 
+            "https://drive.google.com/thumbnail?id=1sXCjQPTEHD1MAvxme9qNmbeZZTbrOX5e"],
             price: 25950,
             color: "Beige"
         },

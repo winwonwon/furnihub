@@ -25,13 +25,77 @@ header h1 {
     /* This makes the "Product" text take up the available space between "Back" and the right edge */
 }
 
-.back_icons,
-.filter_icons {
+
+.menu_icons i {
+    font-size: 45px;
+    color: #153147;
+    padding: 0 5px;
     cursor: pointer;
 }
 
-.back_icons h1:hover,
-.filter_icons i:hover {
+.menu_icons i:hover {
+    color: #ADB8BB;
+}
+
+.navigation {
+    background-color: #153147;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    right: 100%;
+    width: 500px;
+    z-index: 1000;
+    transition: left 1s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-container ul li {
+    margin-bottom: 40px;
+}
+
+.menu-container ul li a {
+    color: #f9f8f7;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.menu-container ul li a:hover {
+    color: #ADB8BB;
+}
+
+
+.close_icons i {
+    color: #f9f8f7;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close_icons i:hover {
+    color: #ADB8BB;
+}
+
+/* showing the nav menu when active */
+.navigation.active {
+    right: 0px;
+}
+
+.back_icons {
+    cursor: pointer;
+}
+
+.back_icons {
     color: #ADB8BB;
 }
 
@@ -61,6 +125,8 @@ header h1 {
 .products_des {
     font-size: 14px;
     text-align: left;
+    margin-top: 20px;
+    margin-bottom: 50px;
     padding: 5px;
 }
 
@@ -68,6 +134,11 @@ header h1 {
     box-shadow: 0 3px 6px rgb(79, 79, 79);
 }
 
+.footer {
+    background-color: #EDEAE4;
+    margin-top: 50px;
+    padding: 22px;
+}
 
 @media only screen and (max-width: 768px) {
     .product {

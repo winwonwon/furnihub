@@ -1,7 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var menuIcon = document.getElementById("menuIcon");
+    var navigation = document.getElementById("navigation");
+    var closeIcon = document.getElementById("closeIcon");
 
     const body = document.body;
     const productContainer = document.querySelector(".product");
+
+    // toggle nav menu when menu icon is clicked
+    menuIcon.addEventListener("click", function () {
+        navigation.classList.toggle("active");
+    });
+
+    // close nav menu when close icon is clicked
+    closeIcon.addEventListener("click", function () {
+        navigation.classList.remove("active");
+    });
+
 
     // function to handle clicking the back icon
     function handleBackClick() {
@@ -28,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Desk",
             room: "Living room",
             brand: "IKEA",
-            image: "borgeby.png",
+            image: "https://drive.google.com/thumbnail?id=1o-63BTaxmSOVdNvbGTeHSNEe0_tMrmhL",
             price: 2590,
             color: "Birch veneer"
         }, {
@@ -39,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Desk",
             room: "Living room",
             brand: "IKEA",
-            image: "borgeby_b.png",
+            image: "https://drive.google.com/thumbnail?id=1iPsqIUjfTFIdPt5Q2Aj5-7zDXCkkEGZw",
             price: 2590,
             color: "Black"
         },
@@ -51,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Sofa",
             room: "Living room",
             brand: "IKEA",
-            image: "vimle.png",
+            image: "https://drive.google.com/thumbnail?id=1WbN6OxvP-T6EPWfumFdDk_jDm7c5GmLB",
             price: 25950,
             color: "Beige"
         },
@@ -63,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Bed",
             room: "Bedroom",
             brand: "IKEA",
-            image: "malm.png",
+            image: "https://drive.google.com/thumbnail?id=1frTH7xi9ycuGnUEwZKguF7keBUsJ_hze",
             price: 9990,
             color: "White"
         },
@@ -75,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Bed",
             room: "Bedroom",
             brand: "IKEA",
-            image: "hemnes.png",
+            image: "https://drive.google.com/thumbnail?id=1CzkmRvJ7RXGfbVCUC571X1KXM_K2yX0L",
             price: 20970,
             color: "White"
         }
