@@ -21,6 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "../login.html";
     });
 
+    // redirect to products page when register/sign-in link is clicked
+    document.getElementById("shopNowBtn").addEventListener("click", function() {
+        window.location.href = "../products/products.html";
+    });
+
     // get all the menu items
     var menuItems = document.querySelectorAll(".navigation ul li a");
 
