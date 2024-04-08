@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // redirect to login page when register/sign-in link is clicked
     registerSignIn.addEventListener("click", function (event) {
         event.preventDefault(); // prevent the default behavior of the anchor tag
-        window.location.href = "../login.html";
+        window.location.href = "../login";
     });
 
     // redirect to products page when "shop now" is clicked
