@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Jost", sans-serif;
+    color: #153147;
+    font-weight: 600;
+}
+
+body {
+    scroll-behavior: smooth;
+    background: #f9f8f7;
+}
+
+header {
+    background-color: #EDEAE4;
+    padding: 20px;
+    display: flex;
+    box-shadow: 0 px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.back_icons {
+    cursor: pointer;
+}
+
+.back_icons h1:hover {
+    color: #ADB8BB;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.image-container {
+    display: flex;
+}
+
+.main-img img {
+    width: 450px;
+    height: 450px;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+.small-images {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    /* spacing between main image and small images */
+}
+
+.small-images .img_product {
+    margin-bottom: 10px;
+}
+
+.small-images .img_product img {
+    width: 100px;
+    cursor: pointer;
+}
+
+.details-container {
+    width: 50%;
+    margin-left: 50px;
+    /* spacing between small images and details */
+}
+
+.details-container h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.details-container h2 {
+    margin-top: 0px;
+    font-weight: 500;
+}
+
+.details-container h3 {
+    color: #4a4a4a;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.details-container p {
+    color: #4a4a4a;
+    font-weight: 450;
+}
+
+.quantity-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #939393;
+}
+
+.quantity-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.quantity-container input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+button#add-to-cart {
+    background-color: #153147;
+    color: #f9f8f7;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    transition: background-color 0.3s;
+    /* smooth transition on hover */
+}
+
+button#add-to-cart:hover {
+    background-color: #d8d8d8;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #EDEAE4;
+    padding: 22px;
+}

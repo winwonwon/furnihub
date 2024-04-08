@@ -18,18 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // redirect to login page when register/sign-in link is clicked
     registerSignIn.addEventListener("click", function (event) {
         event.preventDefault(); // prevent the default behavior of the anchor tag
-        window.location.href = "../login.html";
+        window.location.href = "../login";
     });
 
-    // get all the menu items
-    var menuItems = document.querySelectorAll(".navigation ul li a");
-
-    // add click event listener to each menu item
-    menuItems.forEach(function (item) {
-        item.addEventListener("click", function (event) {
-            // get the href attribute of the clicked menu item
-            var page = this.getAttribute("href");
-            window.location.href = "../" + page; 
-        });
+    // redirect to products page when "shop now" is clicked
+    document.getElementById("shopNowBtn").addEventListener("click", function(event) {
+        event.preventDefault(); // prevent the default behavior of the anchor tag
+        window.location.href = "../products/products.html";
     });
 });

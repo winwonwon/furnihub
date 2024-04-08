@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Jost", sans-serif;
+    color: #153147;
+    font-weight: 600;
+}
+
+body {
+    scroll-behavior: smooth;
+    background: #f9f8f7;
+}
+
+header {
+    background-color: #EDEAE4;
+    position: relative;
+    display: flex;
+    padding: 20px;
+    z-index: 1000;
+}
+
+header h1 {
+    text-align: center;
+    flex-grow: 1;
+    /* This makes the "Product" text take up the available space between "Back" and the right edge */
+}
+
+
+.menu_icons i {
+    font-size: 45px;
+    color: #153147;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.menu_icons i:hover {
+    color: #ADB8BB;
+}
+
+.navigation {
+    background-color: #153147;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    right: 100%;
+    width: 500px;
+    z-index: 1000;
+    transition: left 1s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-container ul li {
+    margin-bottom: 40px;
+}
+
+.menu-container ul li a {
+    color: #f9f8f7;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.menu-container ul li a:hover {
+    color: #ADB8BB;
+}
+
+
+.close_icons i {
+    color: #f9f8f7;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close_icons i:hover {
+    color: #ADB8BB;
+}
+
+/* showing the nav menu when active */
+.navigation.active {
+    right: 0px;
+}
+
+.back_icons {
+    cursor: pointer;
+}
+
+.back_icons {
+    color: #ADB8BB;
+}
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 33%;
+}
+
+.products {
+    text-align: center;
+    width: 300px;
+    height: 260px;
+    margin: 80px;
+    margin-top: 50px;
+    border: 1px solid #153147;
+    cursor: pointer;
+}
+
+.products img {
+    margin-top: 20px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.products_des {
+    font-size: 14px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 5px;
+}
+
+.products:hover {
+    box-shadow: 0 3px 6px rgb(79, 79, 79);
+}
+
+.footer {
+    background-color: #EDEAE4;
+    margin-top: 50px;
+    padding: 22px;
+}
+
+@media only screen and (max-width: 768px) {
+    .product {
+        min-width: 370px;
+        /* Set a minimum width for the container */
+    }
+
+    .products img {
+        margin-top: 40px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}

@@ -1,12 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
+    var menuIcon = document.getElementById("menuIcon");
+    var navigation = document.getElementById("navigation");
+    var closeIcon = document.getElementById("closeIcon");
+
+    const body = document.body;
     const productContainer = document.querySelector(".product");
 
-    // go to browse page when back icon is clicked
-    document.getElementById("backIcon").addEventListener("click", function () {
-        window.location.href = "browse.html";
+    // toggle nav menu when menu icon is clicked
+    menuIcon.addEventListener("click", function () {
+        navigation.classList.toggle("active");
     });
 
-    // define an array of products
+    // close nav menu when close icon is clicked
+    closeIcon.addEventListener("click", function () {
+        navigation.classList.remove("active");
+    });
+
+
+    // function to handle clicking the back icon
+    function handleBackClick() {
+        // check if the referrer URL indicates the user came from the browse page
+        const referrer = document.referrer;
+        if (referrer.includes('/browse.html')) {
+            // redirect to the browse page
+            window.location.href = '../browse.html';
+        } else {
+            // redirect to the homepage
+            window.location.href = '../';
+        }
+    }
+
+    // add event listener for the back icon
+    document.getElementById("backIcon").addEventListener("click", handleBackClick);
+
     const products = [
         {
             id: 108,
@@ -16,11 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Desk",
             room: "Living room",
             brand: "IKEA",
-            image: "borgeby.png",
+            image: "https://drive.google.com/thumbnail?id=1o-63BTaxmSOVdNvbGTeHSNEe0_tMrmhL",
             price: 2590,
             color: "Birch veneer"
-        },
-        {
+        }, {
             id: 109,
             name: "BORGEBY",
             description: "BORGEBY storage table has an elegant, simple and stylish design with a harmonious and balanced expression. The rounded airy shape, smooth surface and natural material make the table suitable for many different living situations and interior styles.",
@@ -28,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Desk",
             room: "Living room",
             brand: "IKEA",
-            image: "borgeby_b.png",
+            image: "https://drive.google.com/thumbnail?id=1iPsqIUjfTFIdPt5Q2Aj5-7zDXCkkEGZw",
             price: 2590,
             color: "Black"
         },
@@ -40,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Sofa",
             room: "Living room",
             brand: "IKEA",
-            image: "vimle.png",
+            image: "https://drive.google.com/thumbnail?id=1WbN6OxvP-T6EPWfumFdDk_jDm7c5GmLB",
             price: 25950,
             color: "Beige"
         },
@@ -52,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Bed",
             room: "Bedroom",
             brand: "IKEA",
-            image: "malm.png",
+            image: "https://drive.google.com/thumbnail?id=1frTH7xi9ycuGnUEwZKguF7keBUsJ_hze",
             price: 9990,
             color: "White"
         },
@@ -64,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Bed",
             room: "Bedroom",
             brand: "IKEA",
-            image: "hemnes.png",
+            image: "https://drive.google.com/thumbnail?id=1CzkmRvJ7RXGfbVCUC571X1KXM_K2yX0L",
             price: 20970,
             color: "White"
         }
@@ -74,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // function to generate HTML for each product
     function generateProductHTML(product) {
         return `
-            <div class="products">
+            <div class="products" data-id="${product.id}">
                 <img src="${product.image}">
                 <div class="products_des">
                     <h2>${product.name}</h2>
@@ -94,6 +119,19 @@ document.addEventListener("DOMContentLoaded", function () {
         products.forEach(product => {
             const productHTML = generateProductHTML(product);
             productContainer.insertAdjacentHTML('beforeend', productHTML);
+        });
+
+        // add event listener to each product item
+        const productItems = document.querySelectorAll('.products');
+        productItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const productId = parseInt(item.getAttribute('data-id'));
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    // redirect to detail page passing product id
+                    window.location.href = `../detail_products/detail_products.html?id=${productId}`;
+                }
+            });
         });
     }
 

@@ -1,12 +1,12 @@
 {
-  "name": "furnihub_service",
+  "name": "webservice",
   "version": "1.0.0",
-  "description": "Backend Application for Furnihub",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "Pongpon Tangpigulthong",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
