@@ -7,8 +7,18 @@
     scroll-behavior: smooth;
 }
 
+/* setting bg color for the entire page */
 body {
     background: #f9f8f7;
+}
+
+header {
+    width: 100%;
+    background: #f9f8f7;
+}
+
+.first_part h1:hover {
+    color: #ADB8BB;
 }
 
 .myAccount{
@@ -17,32 +27,28 @@ body {
     margin: 20px;
 }
 
-menubar{
-    text-align: right;
-    margin: 20px;
-    margin-left: 300px;
-    font-size: 23px;
-    transform: translateY(-10%);
-    transform: translateX(-1%);
-}
-
-.menubar i{
-    font-size: 30px;
+.first_part .menu_icons i {
+    font-size: 45px;
     color: #153147;
+    padding: 0 5px;
     cursor: pointer;
+    margin-left: 1350px; 
+    margin-top: 10px;
 }
 
-.menubar i:hover{
+.first_part .menu_icons i:hover {
     color: #ADB8BB;
 }
 
 .navigation {
     background-color: #153147;
     position: fixed;
-    bottom: 0; right: 0; top: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
     right: 100%;
     width: 500px;
-    z-index: 1000; 
+    z-index: 1000;
     transition: left 1s ease;
     display: flex;
     flex-direction: column;
@@ -52,12 +58,10 @@ menubar{
 
 .menu-container ul li {
     margin-bottom: 40px;
-    list-style: none; /* Remove default list styling */
-
 }
 
 .menu-container ul li a {
-    color: #EDEAE4; 
+    color: #f9f8f7;
     font-size: 35px;
     display: flex;
     align-items: center;
@@ -65,13 +69,13 @@ menubar{
     text-decoration: none;
 }
 
-.menu-container ul li a:hover{
+.menu-container ul li a:hover {
     color: #ADB8BB;
-} 
+}
 
 
 .close_icons i {
-    color: #EDEAE4;
+    color: #f9f8f7;
     position: absolute;
     top: 20px;
     left: 20px;
@@ -81,20 +85,61 @@ menubar{
     cursor: pointer;
 }
 
-.close_icons i:hover{
+.close_icons i:hover {
     color: #ADB8BB;
 }
 
-/* Showing the nav menu when active */
+/* showing the nav menu when active */
 .navigation.active {
     right: 0px;
 }
 
 .straight-line {
-    margin: 180px;
-    margin-top: 2px;
+    margin: 200px;
+    margin-top: 0px;
     margin-bottom: 0px;
+    align-items: center;
     width: 70%; /* Length of the line */
     height: 1px; /* Thickness of the line */
     background-color: black;
+}
+
+.container {
+    align-items: center;
+    margin-top: 65px;
+}
+
+section {
+    width: 75%;
+    margin: auto;
+    padding: 30px;
+}
+
+.option {
+    background-color: #E8E4E0;
+    padding: 35px;
+    border-radius: 10px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: #000000;
+}
+
+.box {
+    margin-right: auto;
+}
+
+.arrow {
+    margin-left: auto; /* Move ">" to the right */
+    color: #153147; /* Add color to the arrow */
+    margin-right: 10px; /* Add some space between the text and the arrow */
+}
+
+fieldset{
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: rgb(0, 0, 0);
 }
