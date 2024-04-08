@@ -2,9 +2,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const body = document.body;
     const productContainer = document.querySelector(".product");
-    document.getElementById("backIcon").addEventListener("click", function () {
-        window.location.href = "../browse.html";
-    });
+
+    // function to handle clicking the back icon
+    function handleBackClick() {
+        // check if the referrer URL indicates the user came from the browse page
+        const referrer = document.referrer;
+        if (referrer.includes('/browse.html')) {
+            // redirect to the browse page
+            window.location.href = '../browse.html';
+        } else {
+            // redirect to the homepage
+            window.location.href = '../';
+        }
+    }
+
+    // add event listener for the back icon
+    document.getElementById("backIcon").addEventListener("click", handleBackClick);
 
     const products = [
         {
