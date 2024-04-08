@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Jost", sans-serif;
+    color: #153147;
+    font-weight: 600;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f9f8f7;
+}
+
+.myAccount{
+    color: #153147;
+    text-align: center;
+    margin: 20px;
+}
+
+menubar{
+    text-align: right;
+    margin: 20px;
+    margin-left: 300px;
+    font-size: 23px;
+    transform: translateY(-10%);
+    transform: translateX(-1%);
+}
+
+.menubar i{
+    font-size: 30px;
+    color: #153147;
+    cursor: pointer;
+}
+
+.menubar i:hover{
+    color: #ADB8BB;
+}
+
+.navigation {
+    background-color: #153147;
+    position: fixed;
+    bottom: 0; right: 0; top: 0;
+    right: 100%;
+    width: 500px;
+    z-index: 1000; 
+    transition: left 1s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-container ul li {
+    margin-bottom: 40px;
+    list-style: none; /* Remove default list styling */
+
+}
+
+.menu-container ul li a {
+    color: #EDEAE4; 
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.menu-container ul li a:hover{
+    color: #ADB8BB;
+} 
+
+
+.close_icons i {
+    color: #EDEAE4;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close_icons i:hover{
+    color: #ADB8BB;
+}
+
+/* Showing the nav menu when active */
+.navigation.active {
+    right: 0px;
+}
+
+.straight-line {
+    margin: 180px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    width: 70%; /* Length of the line */
+    height: 1px; /* Thickness of the line */
+    background-color: black;
+}
