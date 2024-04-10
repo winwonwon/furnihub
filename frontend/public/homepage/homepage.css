@@ -10,6 +10,7 @@
 /* setting bg color for the entire page */
 body {
     background: #f9f8f7;
+    padding-bottom: 50px;
 }
 
 header {
@@ -267,8 +268,11 @@ header {
     box-shadow: 0 3px 6px rgb(79, 79, 79);
 }
 
-/* styles the footer section of the webpage by sets the bg*/
 .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #EDEAE4;
     padding: 22px;
 }

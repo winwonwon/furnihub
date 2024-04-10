@@ -8,7 +8,8 @@
     <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap">
     <link rel="stylesheet" href="browse.css">
     <title>Browse</title>
 </head>
@@ -34,6 +35,51 @@
             <i class='bx bx-x'></i> <!-- Close button for the nav menu -->
         </button>
     </nav>
+
+    <h4 id="advancedSearch"> Advanced search </h4>
+
+    <!-- Popup Container -->
+    <div class="popup-container hidden" id="popupContainer">
+        <div class="popup">
+            <form>
+                <fieldset>
+                    <legend>Advanced Search</legend>
+                    <div class="input-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" placeholder="Enter name of products">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="brand">Brand:</label>
+                        <input type="text" id="brand" placeholder="Enter brand eg. IKEA, Koncept, Livingmall">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="room">Room:</label>
+                        <input type="text" id="room" placeholder="Enter room eg. Bedroom, Living Room">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="category">Category:</label>
+                        <input type="text" id="category" placeholder="Enter category eg. Bed, Desk, Chair, Pillow">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="price">Price:</label>
+                        <input type="text" id="price" placeholder="Enter price" pattern="[0-9]*">
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" id="cancel">Cancel</button>
+                        <button type="submit" id="submit">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="overlay" id="overlay"></div>
 
     <div class="search">
         <form>
@@ -67,7 +113,7 @@
             <div class="over">Kitchen</div>
 
             <img src="https://drive.google.com/thumbnail?id=1Oj0Q6VGipy4BOJPYatckX9d3XffR9Zja">
-            <div class="overlay">Dining Room</div>
+            <div class="overlayy">Dining Room</div>
         </div>
 
         <div class="bath">

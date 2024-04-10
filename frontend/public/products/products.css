@@ -9,6 +9,7 @@
 body {
     scroll-behavior: smooth;
     background: #f9f8f7;
+    padding-bottom: 90px;
 }
 
 header {
@@ -135,8 +136,11 @@ header h1 {
 }
 
 .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #EDEAE4;
-    margin-top: 50px;
     padding: 22px;
 }
 

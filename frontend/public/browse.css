@@ -9,6 +9,7 @@
 
 body {
     background: #f9f8f7;
+    padding-bottom: 100px;
 }
 
 .menubar {
@@ -16,6 +17,7 @@ body {
     margin: 20px;
     font-size: 45px;
     color: #153147;
+    margin-bottom: 0px;
     cursor: pointer;
 }
 
@@ -41,11 +43,13 @@ body {
 
 .menu-container ul li {
     margin-bottom: 40px;
-    list-style: none;  /* Remove default list styling */
+    list-style: none;
+    /* remove default list styling */
 }
 
 .menu-container ul li a {
     color: #EDEAE4;
+    color: #f9f8f7;
     font-size: 35px;
     display: flex;
     align-items: center;
@@ -68,13 +72,111 @@ body {
     cursor: pointer;
 }
 
-.close_icons i:hover {
+.close_icons i:hover,
+h4:hover {
     color: #ADB8BB;
 }
 
-/* Showing the nav menu when active */
+/* showing the nav menu when active */
 .navigation.active {
     right: 0px;
+}
+
+h4 {
+    text-align: right;
+    margin: 0;
+    margin-right: 300px;
+    text-decoration: underline;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* semi-transparent black overlay */
+    z-index: 998;
+    /* ensure the overlay is below the popup */
+    display: none;
+    /* initially hidden */
+}
+
+.popup {
+    background-color: #f9f8f7;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 500px;
+    margin: 100px;
+}
+
+.popup form fieldset {
+    border: none;
+    padding: 0;
+}
+
+.popup legend {
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input[type="text"] {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ababab;
+    border-radius: 5px;
+    width: calc(100% - 10px);
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cancel {
+    background-color: #ccc;
+    color: #333;
+}
+
+#submit {
+    background-color: #153147;
+    color: #f9f8f7;
+}
+
+#submit:hover {
+    background-color: #1c4e85;
 }
 
 .search {
@@ -82,8 +184,8 @@ body {
     align-items: center;
     position: relative;
     width: 100%;
-    max-width: 1370px; 
-    margin: 30px;
+    max-width: 1370px;
+    margin: 10px;
 }
 
 .search form {
@@ -136,8 +238,8 @@ input:focus {
 
 .searchtwo {
     position: absolute;
-    right: 50px; /* Adjust the distance from the right edge of the form */
-    top: 50%; /* Vertically center the icon */
+    right: 50px;
+    top: 50%;
     transform: translateY(-50%);
 }
 
@@ -158,7 +260,7 @@ input:focus {
     margin: 25px;
     margin-bottom: 0px;
     display: flex;
-    justify-content: center; /* Center horizontally */
+    justify-content: center;
 }
 
 /*living+bed*/
@@ -177,7 +279,6 @@ input:focus {
 .text_overlay {
     position: absolute;
     left: 290px;
-    /* Adjust the horizontal position of the text */
     color: #f9f8f7;
     margin-top: 0px;
     font-size: 17px;
@@ -207,13 +308,12 @@ input:focus {
 .over {
     position: absolute;
     left: 290px;
-    /* Adjust the horizontal position of the text */
     color: #f9f8f7;
     margin-top: 0px;
     font-size: 17px;
 }
 
-.overlay {
+.overlayy {
     position: absolute;
     left: 740px;
     color: #f9f8f7;
@@ -270,7 +370,10 @@ input:focus {
 }
 
 .footer {
-    margin-top: 60px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #EDEAE4;
     padding: 22px;
 }
