@@ -1,3 +1,4 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -5,15 +6,17 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Body */
 body {
-    background-color: #fff;
+    background-color: #f4f4f4;
 }
 
+/* Cart Title */
 .mycart h1{
     text-align: center;
-    color: #153147;
 }
 
+/* Menu Bar */
 .menubar {
     text-align: right;
     margin: 20px;
@@ -33,6 +36,7 @@ body {
     color: #ADB8BB;
 }
 
+/* Navigation */
 .navigation {
     background-color: #153147;
     position: fixed;
@@ -93,7 +97,8 @@ body {
     height: 1px;
     background-color: #153147;
 }
-/*pic1*/
+
+/* Cart Item Image */
 .cartitem img {
     max-width: 280px;
     height: 240px;
@@ -102,15 +107,17 @@ body {
     transform: translateX(80%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-/*padding*/
+
+/* Cart Item Padding */
 .cartitem {
     padding: 20px;
     border-radius: 10px;
     background-color: #fff;
     margin-bottom: 20px;
-    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-/*detail pro1*/
+
+/* Cart Item Title */
 .cartitem h4 {
     text-align: left;
     margin: 0;
@@ -118,7 +125,8 @@ body {
     font-size: 23px;
     transform: translateY(-300%);
 }
-/*trash pro1*/
+
+/* Cart Item Trash Icon */
 .cartitem i {
     font-size: 25px;
     right: 270px;
@@ -126,28 +134,29 @@ body {
     top: 50%;
     right: 250px;
     color: #153147;
-    transform: translateY(150%);
-    /*cursor: pointer;*/
+    transform: translateY(90%);
 }
-/*pic pro2*/
+
+/* Product Table Image */
 .producttable img {
     max-width: 250px;
-    height: 230px;
+    height: 200px;
     border-radius: 10px;
     transform: translateX(75%);
     margin-top: -70px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/*detail pro2*/
+/* Product Table Title */
 .producttable h4 {
     text-align: left;
     margin: 0;
     margin-left: 480px;
     font-size: 23px;
-    transform: translateY(-300%);
+    transform: translateY(-260%);
 }
-/*trash pro two*/
+
+/* Product Table Trash Icon */
 .producttable i {
     font-size: 25px;
     right: 270px;
@@ -155,56 +164,87 @@ body {
     top: 97%;
     right: 250px;
     color: #153147;
-    transform: translateY(450%);
+    transform: translateY(90%);
 }
-/* box quan color pro1*/
-.container, .text-box, .number-box, .containertwo, .secondbox, .half-boxcolor, .half-boxbeige {
+
+/* Container Styles */
+.container,
+.text-box,
+.number-box,
+.containertwo,
+.secondbox,
+.half-boxcolor,
+.half-boxbeige {
     display: flex;
     justify-content: center;
     margin-right: 100px;
     transform: translateY(-275%);
     flex: 1;
-    padding: 2px;
     width: 300px;
     margin: 0px auto;
-    margin-top: 20px;
-    
 }
-/*pro1 box*/
+
+/* Text Box Styles */
 .text-box,
 .number-box,
 .half-boxcolor,
 .half-boxbeige,
-.half-boxcoltwo, .half-boxoak {
+.half-boxcoltwo,
+.half-boxoak {
     flex: 1;
     text-align: center;
     padding: 10px;
-    border: 1px solid #153147;
+    border: 1px solid #ccc;
     border-radius: 5px;
     margin: 0 10px;
+    max-width: 300px; /* Added max-width to ensure consistent width for boxes */
+
 }
 
-
-.containertwo, .text-boxtwo, .number-boxtwo, .boxbox, .half-boxcoltwo, .half-boxoak {
+/* Container Two Styles */
+.containertwo,
+.text-boxtwo,
+.number-boxtwo,
+.boxbox,
+.half-boxcoltwo,
+.half-boxoak {
     display: flex;
     justify-content: center;
     margin-right: 100px;
-    transform: translateY(-95%);
+    transform: translateY(-275%);
     flex: 1;
-    padding: 2px;
     width: 300px;
     margin: 0px auto;
-    margin-top: 20px;
     
 }
 
+/* Text Box Two Styles */
 .text-boxtwo,
 .number-boxtwo,
-.half-boxcoltwo, .half-boxoak {
+.half-boxcoltwo,
+.half-boxoak {
     flex: 1;
     text-align: center;
     padding: 10px;
-    border: 1px solid #153147;
+    transform: translateY(-90%);
+    border: 1px solid #ccc;
     border-radius: 5px;
     margin: 0 10px;
+}
+
+.containertwo {
+    margin-top: 40px;
+}
+
+/* Adjusted margin for better spacing */
+.secondbox {
+    margin: 0 20px;
+}
+
+.container,
+.containertwo {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto; /* Adjusted margin to create space between containers */
+    width: 100%; /* Changed width to 100% to ensure responsiveness */
 }
