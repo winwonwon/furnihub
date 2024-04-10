@@ -1,8 +1,15 @@
-*{
+* {
     margin: 0;
-    padding: 0;    
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    font-family: "Jost", sans-serif;
+    color: #153147;
+    font-weight: 600;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f9f8f7;
+    padding-bottom: 50px;
 }
 
 .aboutus{
@@ -25,7 +32,7 @@
 }
 
 .menubar i{
-    font-size: 30px;
+    font-size: 45px;
     color: #153147;
     cursor: pointer;
 }
@@ -191,4 +198,13 @@
     margin-left: 430px;
     text-align: left;
     top: -110px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #EDEAE4;
+    padding: 22px;
 }

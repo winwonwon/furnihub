@@ -1,12 +1,15 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Jost", sans-serif;
+    color: #153147;
+    font-weight: 600;
+    scroll-behavior: smooth;
 }
 
+/* setting bg color for the entire page */
 body {
-    background-color: #fff;
+    background: #f9f8f7;
 }
 
 .mycart h1{
@@ -24,7 +27,7 @@ body {
 }
 
 .menubar i {
-    font-size: 30px;
+    font-size: 45px;
     color: #153147;
     cursor: pointer;
 }
@@ -106,7 +109,7 @@ body {
 .cartitem {
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #f9f8f7;
     margin-bottom: 20px;
     
 }
@@ -207,4 +210,13 @@ body {
     border: 1px solid #153147;
     border-radius: 5px;
     margin: 0 10px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #EDEAE4;
+    padding: 22px;
 }
