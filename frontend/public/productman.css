@@ -180,6 +180,24 @@ tr:nth-child(even) td {
     max-width: 300px; /* Optionally, set a maximum width */
 }
 
+#add-product-popup textarea {
+  border: 2px dashed #ccc; 
+  padding: 20px;
+  margin-left: 20px; 
+  margin-top: 10px;
+  cursor: pointer; 
+  width: 50%;
+}
+
+#edit-product-popup textarea {
+  border: 2px dashed #ccc; 
+  padding: 20px;
+  margin-left: 20px; 
+  margin-top: 10px;
+  cursor: pointer; 
+  width: 50%;
+}
+
 #open-add-popup {
   position: fixed;
   bottom: 20px;

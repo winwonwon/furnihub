@@ -1,29 +1,59 @@
-const products = [
-    { id: 1, name: "T-Shirt", category: "Clothing", brand: "Brand X", stock: 10, price: 20.00 },
-    { id: 2, name: "Headphones", category: "Electronics", brand: "Brand Y", stock: 5, price: 50.00 },
-    { id: 3, name: "Jeans", category: "Clothing", brand: "Brand Z", stock: 8, price: 30.00 },
-    { id: 4, name: "Smartphone", category: "Electronics", brand: "Brand A", stock: 15, price: 300.00 },
-    { id: 5, name: "Sneakers", category: "Footwear", brand: "Brand B", stock: 20, price: 50.00 }
-];
+const products = []; // Initialize an empty array to store fetched products
+
+function fetchData(products) {
+    return fetch('http://localhost:3000/api/products')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch products');
+            }
+            return response.json();
+        })
+        .then(responseData => {
+            if (responseData.error === false && Array.isArray(responseData.data)) {
+                // Extract the 'data' array from the response object
+                const fetchedProducts = responseData.data;
+
+                // Push each product from 'fetchedProducts' array into the provided 'productsArray'
+                fetchedProducts.forEach(product => {
+                    products.push(product);
+                });
+
+                console.log('Products fetched:', products);
+                return products; // Return the array of fetched products
+            } else {
+                console.error('Invalid response format:', responseData);
+                throw new Error('Invalid response format');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching or processing products:', error);
+            throw error; // Propagate the error to the caller
+        });
+}
+
+
 
 // Function to display products in the table
 function displayProducts(products) {
+    console.log('Products to display:', products); // Log fetched products
+
     const tbody = document.getElementById("product-list");
     tbody.innerHTML = ""; // Clear the table before adding new rows
+
     products.forEach(product => {
         const row = document.createElement("tr");
         row.innerHTML = `
-        <td>${product.id}</td>
-        <td>${product.name}</td>
-        <td>${product.category}</td>
-        <td>${product.brand}</td>
-        <td>${product.stock}</td>
-        <td>$${product.price.toFixed(2)}</td>
-        <td>
-          <button class="edit-btn" data-id="${product.id}">Edit</button>
-          <button class="delete-btn" data-id="${product.id}">Delete</button>
-        </td>
-      `;
+            <td>${product.PRODUCT_ID}</td>
+            <td>${product.PRODUCT_NAME}</td>
+            <td>${product.PRODUCT_CATEGORY}</td>
+            <td>${product.PRODUCT_BRAND}</td>
+            <td>${product.PRODUCT_QUANTITY}</td>
+            <td>$${product.PRODUCT_PRICE}</td>
+            <td>
+                <button class="edit-btn" data-id="${product.PRODUCT_ID}">Edit</button>
+                <button class="delete-btn" data-id="${product.PRODUCT_ID}">Delete</button>
+            </td>
+        `;
         tbody.appendChild(row);
     });
 }
@@ -32,73 +62,110 @@ function displayProducts(products) {
 function handleEditButtonClick(event) {
     const button = event.target;
     const productId = parseInt(button.getAttribute("data-id"));
-    const productIndex = products.findIndex(prod => prod.id === productId); // Find the index of the product
+    const productIndex = products.findIndex(prod => prod.PRODUCT_ID === productId); // Find the index of the product
     const product = products[productIndex]; // Retrieve the product using the index
+
     if (!product) {
         console.error("Product not found");
         return;
     }
 
-    const editPopup = document.getElementById("edit-product-popup");
-    const nameInput = editPopup.querySelector("#name");
-    const categoryInput = editPopup.querySelector("#category");
-    const brandInput = editPopup.querySelector("#brand");
-    const stockInput = editPopup.querySelector("#stock");
-    const priceInput = editPopup.querySelector("#price");
-    nameInput.value = product.name;
-    categoryInput.value = product.category;
-    brandInput.value = product.brand;
-    stockInput.value = product.stock;
-    priceInput.value = product.price;
+    // Retrieve input values from the form
+    const nameInput = document.getElementById("name");
+    const descriptionInput = document.getElementById("description");
+    const categoryInput = document.getElementById("category");
+    const roomInput = document.getElementById("room");
+    const brandInput = document.getElementById("brand");
+    const quantityInput = document.getElementById("quantity");
+    const priceInput = document.getElementById("price");
+    const colorInput = document.getElementById("color");
+    // const picture1Input = document.getElementById("picture1");
+    // const picture2Input = document.getElementById("picture2");
+    // const picture3Input = document.getElementById("picture3");
+    // const picture4Input = document.getElementById("picture4");
 
-    // Show the popup
+    // Set input values to current product details
+    nameInput.value = product.PRODUCT_NAME;
+    descriptionInput.value = product.PRODUCT_DESCRIPTION;
+    categoryInput.value = product.PRODUCT_CATEGORY;
+    roomInput.value = product.PRODUCT_ROOM;
+    brandInput.value = product.PRODUCT_BRAND;
+    quantityInput.value = product.PRODUCT_QUANTITY;
+    priceInput.value = product.PRODUCT_PRICE;
+    colorInput.value = product.PRODUCT_COLOR;
+    // picture1Input.value = product.PRODUCT_PICTURE1;
+    // picture2Input.value = product.PRODUCT_PICTURE2;
+    // picture3Input.value = product.PRODUCT_PICTURE3;
+    // picture4Input.value = product.PRODUCT_PICTURE4;
+
+    // Show the edit product popup
     showPopup();
 
-    // Remove event listeners before attaching new ones
+    // Remove event listeners before attaching new ones to prevent duplicates
+    const editPopup = document.getElementById("edit-product-popup");
     const saveBtn = editPopup.querySelector("#save-btn");
     const closeBtn = editPopup.querySelector("#close-btn");
-    saveBtn.removeEventListener("click", handleSaveButtonClick);
-    closeBtn.removeEventListener("click", handleCloseButtonClick);
+    saveBtn.removeEventListener("click", handleSaveButtonClick); // Remove old save button listener
+    closeBtn.removeEventListener("click", handleCloseButtonClick); // Remove old close button listener
 
-    // Handle save button click
-    saveBtn.addEventListener("click", () => {
-        // Update product attributes with form values
-        const updatedName = nameInput.value;
-        const updatedCategory = categoryInput.value;
-        const updatedBrand = brandInput.value;
-        const updatedStock = parseInt(stockInput.value);
-        const updatedPrice = parseFloat(priceInput.value);
-
-        // Basic validation (can be extended)
-        if (!updatedName || !updatedCategory || !updatedBrand || !updatedStock || !updatedPrice) {
-            alert("Please fill in all required fields.");
-            return; // Prevent update if validation fails
-        }
-
-        // Update the product in the array
-        products[productIndex] = {
-            ...product,
-            name: updatedName,
-            category: updatedCategory,
-            brand: updatedBrand,
-            stock: updatedStock,
-            price: updatedPrice
+    // Handle save button click within the edit popup
+    saveBtn.addEventListener("click", async () => {
+        const updatedProduct = {
+            PRODUCT_NAME: nameInput.value,
+            PRODUCT_DESCRIPTION: descriptionInput.value,
+            PRODUCT_CATEGORY: categoryInput.value,
+            PRODUCT_ROOM: roomInput.value,
+            PRODUCT_BRAND: brandInput.value,
+            PRODUCT_QUANTITY: parseInt(quantityInput.value),
+            PRODUCT_PRICE: parseFloat(priceInput.value),
+            PRODUCT_COLOR: colorInput.value,
+            // PRODUCT_PICTURE1: picture1Input.value,
+            // PRODUCT_PICTURE2: picture2Input.value,
+            // PRODUCT_PICTURE3: picture3Input.value,
+            // PRODUCT_PICTURE4: picture4Input.value
         };
 
-        // Update product list
-        displayProducts(products);
+        try {
+            const response = await fetch(`http://localhost:3000/api/product/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ product: updatedProduct })
+            });
 
-        // Close the popup
-        hidePopup();
+            if (!response.ok) {
+                throw new Error('Failed to update product.');
+            }
 
-        // Reattach event listeners for edit and delete buttons
-        attachEditButtonListeners();
-        attachDeleteButtonListeners();
+            const data = await response.json();
+            if (data.error) {
+                throw new Error(data.message);
+            }
+
+            // Update the product in the local array
+            products[productIndex] = { ...products[productIndex], ...updatedProduct };
+
+            // Update product list display
+            displayProducts(products);
+
+            // Close the edit popup after successful update
+            hidePopup();
+
+            // Reattach event listeners for edit and delete buttons
+            attachEditButtonListeners();
+            attachDeleteButtonListeners();
+
+            alert('Product updated successfully.');
+        } catch (error) {
+            console.error('Error updating product:', error.message);
+            alert('Failed to update product. Please try again.');
+        }
     });
 
-    // Handle close button click
-    closeBtn.addEventListener("click", () =>{
-        hidePopup()
+    // Handle close button click within the edit popup
+    closeBtn.addEventListener("click", () => {
+        hidePopup();
     });
 }
 
@@ -134,7 +201,7 @@ function hidePopup() {
 function handleDeleteButtonClick(event) {
     const button = event.target;
     const productId = parseInt(button.getAttribute("data-id"));
-    const productIndex = products.findIndex(prod => prod.id === productId);
+    const productIndex = products.findIndex(prod => prod.PRODUCT_ID === productId);
     if (productIndex === -1) {
         console.error("Product not found");
         return;
@@ -145,26 +212,47 @@ function handleDeleteButtonClick(event) {
 }
 
 // Event listener for the confirm delete button click
-document.getElementById("confirm-delete").addEventListener("click", function () {
+document.getElementById("confirm-delete").addEventListener("click", async function () {
     const productId = parseInt(document.getElementById("delete-popup").getAttribute("data-product-id"));
-    const productIndex = products.findIndex(prod => prod.id === productId);
+    const productIndex = products.findIndex(prod => prod.PRODUCT_ID === productId);
+    
     if (productIndex === -1) {
         console.error("Product not found");
         return;
     }
 
-    // Perform deletion
-    products.splice(productIndex, 1);
+    try {
+        const response = await fetch(`http://localhost:3000/api/product/${productId}`, {
+            method: 'DELETE',
+        });
 
-    // Update product list
-    displayProducts(products);
+        if (!response.ok) {
+            throw new Error('Failed to delete product.');
+        }
 
-    // Hide the delete confirmation popup
-    hideDeletePopup();
+        const data = await response.json();
+        if (data.error) {
+            throw new Error(data.message);
+        }
 
-    // Reattach
-    attachEditButtonListeners();
-    attachDeleteButtonListeners();
+        // Remove the deleted product from the local products array
+        products.splice(productIndex, 1);
+
+        // Update product list on the UI
+        displayProducts(products);
+
+        // Hide the delete confirmation popup
+        hideDeletePopup();
+
+        // Reattach event listeners for edit and delete buttons
+        attachEditButtonListeners();
+        attachDeleteButtonListeners();
+
+        alert('Product deleted successfully.');
+    } catch (error) {
+        console.error('Error deleting product:', error.message);
+        alert('Failed to delete product. Please try again.');
+    }
 });
 
 // Event listener for the cancel delete button click
@@ -247,42 +335,85 @@ function handleAddButtonClick(event) {
     showAddPopup();
 }
 
-// Function to handle the save button click
-function handleAddSaveButtonClick() {
-    // Get input values
+function generateProductId() {
+    // Find the maximum PRODUCT_ID from existing products
+    const maxProductId = products.reduce((maxId, product) => {
+        return product.PRODUCT_ID > maxId ? product.PRODUCT_ID : maxId;
+    }, 0);
+
+    // Generate a new PRODUCT_ID that is one more than the maximum found
+    const newProductId = maxProductId + 1;
+
+    return newProductId;
+}
+
+async function handleAddSaveButtonClick() {
     const newName = document.getElementById("add-name").value;
+    const newDescription = document.getElementById("add-description").value;
     const newCategory = document.getElementById("add-category").value;
+    const newRoom = document.getElementById("add-room").value;
     const newBrand = document.getElementById("add-brand").value;
-    const newStock = parseInt(document.getElementById("add-stock").value);
+    const newQuantity = parseInt(document.getElementById("add-quantity").value);
     const newPrice = parseFloat(document.getElementById("add-price").value);
+    const newColor = document.getElementById("add-color").value;
 
     // Basic validation
-    if (!newName || !newCategory || !newBrand || isNaN(newStock) || isNaN(newPrice)) {
+    if (!newName || !newDescription || !newCategory || !newRoom || !newBrand || isNaN(newQuantity) || isNaN(newPrice) || !newColor) {
         alert("Please fill in all required fields with valid values.");
         return;
     }
 
-    // Add the new product to the list (this should be replaced with database insertion logic)
-    const newProduct = {
-        id: products.length + 1, // Assuming IDs are incremental
-        name: newName,
-        category: newCategory,
-        brand: newBrand,
-        stock: newStock,
-        price: newPrice
-    };
-    products.push(newProduct);
+    try {
+        const newProductId = await generateProductId(); // Assuming generateProductId() returns a promise
 
-    // Display the updated product list
-    displayProducts(products);
+        const newProduct = {
+            PRODUCT_ID: newProductId,
+            PRODUCT_NAME: newName,
+            PRODUCT_DESCRIPTION: newDescription,
+            PRODUCT_CATEGORY: newCategory,
+            PRODUCT_ROOM: newRoom,
+            PRODUCT_BRAND: newBrand,
+            PRODUCT_QUANTITY: newQuantity,
+            PRODUCT_PRICE: newPrice,
+            PRODUCT_COLOR: newColor,
+            PRODUCT_PICTURE1: "",
+            PRODUCT_PICTURE2: "",
+            PRODUCT_PICTURE3: "",
+            PRODUCT_PICTURE4: ""
+        };
 
-    // Hide the add product popup
-    hideAddPopup();
+        const response = await fetch('http://localhost:3000/api/product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ product: newProduct })
+        });
 
-    // Reattach
-    attachEditButtonListeners();
-    attachDeleteButtonListeners();
+        if (!response.ok) {
+            throw new Error('Failed to add new product.');
+        }
+
+        const data = await response.json();
+        const insertedProduct = data.product;
+
+        // Assuming the response contains the inserted product data with PRODUCT_ID
+
+        products.push(insertedProduct);
+        displayProducts(products);
+        hideAddPopup();
+        attachEditButtonListeners();
+        attachDeleteButtonListeners();
+        alert('Product added successfully.');
+       
+    } catch (error) {
+        console.error('Error adding product:', error.message);
+        alert('Failed to add new product. Please try again.');
+    }
 }
+
+
+
 
 // Function to handle the click event of the "Cancel" button in the add product popup
 function handleAddCancelButtonClick() {
@@ -436,7 +567,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Call functions to display products and attach event listeners
-displayProducts(products);
-attachEditButtonListeners();
-attachDeleteButtonListeners();
-attachOpenAddPopupButtonListener();
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        await fetchData(products); // Pass the 'products' array to fetchData()
+
+        // Now you can use the 'products' array for further processing (e.g., display in a table)
+        displayProducts(products);
+        attachEditButtonListeners();
+        attachDeleteButtonListeners();
+        attachOpenAddPopupButtonListener();
+    } catch (error) {
+        console.error('Failed to fetch products:', error);
+        // Handle error (e.g., display an error message to the user)
+    }
+});
