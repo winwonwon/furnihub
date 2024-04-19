@@ -1,7 +1,7 @@
 const products = []; // Initialize an empty array to store fetched products
 
 function fetchData(products) {
-    return fetch('http://localhost:3000/api/products')
+    return fetch('http://localhost:8085/api/products')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch products');
@@ -126,7 +126,7 @@ function handleEditButtonClick(event) {
         };
 
         try {
-            const response = await fetch(`http://localhost:3000/api/product/${productId}`, {
+            const response = await fetch(`http://localhost:8085/api/product/${productId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -222,7 +222,7 @@ document.getElementById("confirm-delete").addEventListener("click", async functi
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/product/${productId}`, {
+        const response = await fetch(`http://localhost:8085/api/product/${productId}`, {
             method: 'DELETE',
         });
 
@@ -382,7 +382,7 @@ async function handleAddSaveButtonClick() {
             PRODUCT_PICTURE4: ""
         };
 
-        const response = await fetch('http://localhost:3000/api/product', {
+        const response = await fetch('http://localhost:8085/api/product', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
