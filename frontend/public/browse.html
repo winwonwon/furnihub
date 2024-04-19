@@ -82,8 +82,8 @@
     <div class="overlay" id="overlay"></div>
 
     <div class="search">
-        <form>
-            <input type="text" placeholder="What are you looking for?(Search by product name, type, brand)">
+        <form action="http://localhost:8085/search" method="post">
+            <input type="text" placeholder="What are you looking for?(Search by product name, type, brand)" name="queryString">
             <button type="submit">
                 <i class='bx bx-search'></i>
             </button>
