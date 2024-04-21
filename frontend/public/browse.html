@@ -41,32 +41,32 @@
     <!-- Popup Container -->
     <div class="popup-container hidden" id="popupContainer">
         <div class="popup">
-            <form>
+            <form action="http://localhost:8085/api/products/adv-search" method="post" onsubmit="onSubmit()">
                 <fieldset>
                     <legend>Advanced Search</legend>
                     <div class="input-group">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" placeholder="Enter name of products">
+                        <input type="text" id="name" placeholder="Enter name of products" name="queryString">
                     </div>
 
                     <div class="input-group">
                         <label for="brand">Brand:</label>
-                        <input type="text" id="brand" placeholder="Enter brand eg. IKEA, Koncept, Livingmall">
+                        <input type="text" id="brand" placeholder="Enter brand eg. IKEA, Koncept, Livingmall" name="brand">
                     </div>
 
                     <div class="input-group">
                         <label for="room">Room:</label>
-                        <input type="text" id="room" placeholder="Enter room eg. Bedroom, Living Room">
+                        <input type="text" id="room" placeholder="Enter room eg. Bedroom, Living Room" name="room">
                     </div>
 
                     <div class="input-group">
                         <label for="category">Category:</label>
-                        <input type="text" id="category" placeholder="Enter category eg. Bed, Desk, Chair, Pillow">
+                        <input type="text" id="category" placeholder="Enter category eg. Bed, Desk, Chair, Pillow" name="category">
                     </div>
 
                     <div class="input-group">
                         <label for="price">Price:</label>
-                        <input type="text" id="price" placeholder="Enter price" pattern="[0-9]*">
+                        <input type="text" id="price" placeholder="Enter price" pattern="[0-9]*" name="price">
                     </div>
 
                     <div class="button-group">
@@ -82,8 +82,8 @@
     <div class="overlay" id="overlay"></div>
 
     <div class="search">
-        <form action="http://localhost:8085/search" method="post">
-            <input type="text" placeholder="What are you looking for?(Search by product name, type, brand)" name="queryString">
+        <form action="/products" method="get">
+            <input type="text" placeholder="What are you looking for?(Search by product name, type, brand)" name="searchString">
             <button type="submit">
                 <i class='bx bx-search'></i>
             </button>
@@ -134,7 +134,6 @@
     <footer class="footer"></footer>
 
     <script src="browse.js"></script>
-
 </body>
 
 </html>
