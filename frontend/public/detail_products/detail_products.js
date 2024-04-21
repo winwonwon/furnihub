@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // add click event listener to the back icon
     backIcon.addEventListener("click", function () {
         // redirect to the browse page
-        window.location.href = "../products/products.html";
+        window.location.href = "/products";
     });
 
     // simulated data from SQL
@@ -95,6 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     } else {
         // if product not found, redirect to browse page
-        window.location.href = "../browse.html";
+        window.location.href = "/browse";
     }
 });
