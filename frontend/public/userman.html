@@ -9,17 +9,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <title>Account List</title>
+  <title>User List</title>
   <link rel="stylesheet" href="userman.css">
 </head>
 
 <body>
 
   <header>
-    <div class="back_icons" id="backIcon" onclick="window.location.href = 'homepage.html';">
+    <div class="back_icons" id="backIcon" onclick="window.location.href = '/admin-landing'">
       <h1>&lt;Back</h1>
     </div>
-    <h1>Account Management</h1>
+    <h1>User Management</h1>
     <div>
       <i></i>
     </div>
@@ -43,7 +43,7 @@
       </tbody>
     </table>
 
-    <button id="open-add-popup">Add Account</button>
+    <button id="open-add-popup">Add User</button>
   </div>
 
   <div class="overlay" id="overlay"></div>
@@ -51,7 +51,7 @@
   <div id="add-user-popup" class="popup hidden">
     <form>
       <fieldset>
-        <legend>Add Account</legend>
+        <legend>Add User</legend>
         <label for="add-fname">Firstname:</label>
         <input type="text" id="add-fname" required><br>
         <label for="add-lname">Lastname:</label>
@@ -64,8 +64,6 @@
         <input type="email" id="add-email" required><br>
         <label for="add-phonenum">Phone Number:</label>
         <input type="number" id="add-phonenum" required><br>
-        <label for="add-regdate">Register date:</label>
-        <input type="text" id="add-regdate" required><br>
         <button type="button" id="add-user-save-btn">Save</button>
         <button type="button" id="add-user-close-btn">Close</button>
       </fieldset>
@@ -76,7 +74,7 @@
   <div id="edit-user-popup" class="popup hidden">
     <form>
       <fieldset>
-        <legend>Edit Account</legend>
+        <legend>Edit User</legend>
         <label for="edit-fname">Firstname:</label>
         <input type="text" id="edit-fname" required><br>
         <label for="edit-lname">Lastname:</label>
@@ -89,8 +87,6 @@
         <input type="email" id="edit-email" required><br>
         <label for="edit-phonenum">Phone Number:</label>
         <input type="number" id="edit-phonenum" required><br>
-        <label for="edit-regdate">Register date:</label>
-        <input type="text" id="edit-regdate" required><br>
         <button type="button" id="edit-user-save-btn">Save</button>
         <button type="button" id="edit-user-close-btn">Close</button>
       </fieldset>
@@ -99,7 +95,7 @@
 
   <div id="delete-popup" class="popup hidden">
     <div class="popup-content">
-        <p>Are you sure you want to delete this account?</p>
+        <p>Are you sure you want to delete this user?</p>
         <button id="confirm-delete">Yes</button>
         <button id="cancel-delete">Cancel</button>
     </div>

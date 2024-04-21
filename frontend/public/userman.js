@@ -1,10 +1,40 @@
-const users = [
-    { id: 1, firstname: "John", lastname: "Doe", username: "johndoe", password: "password1", email: "john@example.com", phone: "1234567890", registerDate: "2023-01-15" },
-    { id: 2, firstname: "Alice", lastname: "Smith", username: "alicesmith", password: "password2", email: "alice@example.com", phone: "9876543210", registerDate: "2023-02-20" },
-    { id: 3, firstname: "Michael", lastname: "Johnson", username: "michaeljohnson", password: "password3", email: "michael@example.com", phone: "4561237890", registerDate: "2023-03-25" },
-    { id: 4, firstname: "Emily", lastname: "Brown", username: "emilybrown", password: "password4", email: "emily@example.com", phone: "7894561230", registerDate: "2023-04-30" },
-    { id: 5, firstname: "David", lastname: "Lee", username: "davidlee", password: "password5", email: "david@example.com", phone: "3216549870", registerDate: "2023-05-05" }
-];
+const users = []; // Initialize an empty array to store fetched users
+
+function fetchData(users) {
+    return fetch('http://localhost:8085/api/users', {
+        method: 'GET',
+        credentials: "include",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch users');
+            }
+            return response.json();
+        })
+        .then(responseData => {
+            if (responseData.error === false && Array.isArray(responseData.data)) {
+                // Extract the 'data' array from the response object
+                const fetchedUsers = responseData.data;
+
+                // Push each user from 'fetchedUsers' array into the provided 'usersArray'
+                fetchedUsers.forEach(user => {
+                    users.push(user);
+                });
+
+                return users; // Return the array of fetched users
+            } else {
+                console.error('Invalid response format:', responseData);
+                throw new Error('Invalid response format');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching or processing users:', error);
+            throw error; // Propagate the error to the caller
+        });
+}
 
 function displayUsers(users) {
     const tbody = document.getElementById("user-list");
@@ -12,16 +42,16 @@ function displayUsers(users) {
     users.forEach(user => {
         const row = document.createElement("tr");
         row.innerHTML = `
-        <td>${user.id}</td>
-        <td>${user.firstname} ${user.lastname}</td>
-        <td>${user.username}</td>
-        <td>${user.password}</td>
-        <td>${user.email}</td>
-        <td>${user.phone}</td>
-        <td>${user.registerDate}</td>
+        <td>${user.ACCOUNT_ID}</td>
+        <td>${user.ACCOUNT_FNAME} ${user.ACCOUNT_LNAME}</td>
+        <td>${user.ACCOUNT_USERNAME}</td>
+        <td>${user.ACCOUNT_PASSWORD}</td>
+        <td>${user.ACCOUNT_EMAIL}</td>
+        <td>${user.ACCOUNT_PNUMBER}</td>
+        <td>${user.ACCOUNT_CREATION_DATE}</td>
         <td>
-          <button class="edit-btn" data-id="${user.id}">Edit</button>
-          <button class="delete-btn" data-id="${user.id}">Delete</button>
+          <button class="edit-btn" data-id="${user.ACCOUNT_ID}">Edit</button>
+          <button class="delete-btn" data-id="${user.ACCOUNT_ID}">Delete</button>
         </td>
       `;
         tbody.appendChild(row);
@@ -31,8 +61,8 @@ function displayUsers(users) {
 // Function to handle the edit button click
 function handleEditButtonClick(event) {
     const button = event.target;
-    const userId = parseInt(button.getAttribute("data-id"));
-    const userIndex = users.findIndex(user => user.id === userId); // Find the index of the user
+    const userId = (button.getAttribute("data-id"));
+    const userIndex = users.findIndex(user => user.ACCOUNT_ID === userId); // Find the index of the user
     const user = users[userIndex]; // Retrieve the user using the index
     if (!user) {
         console.error("User not found");
@@ -46,15 +76,13 @@ function handleEditButtonClick(event) {
     const passwordInput = editPopup.querySelector("#edit-password");
     const emailInput = editPopup.querySelector("#edit-email");
     const phoneInput = editPopup.querySelector("#edit-phonenum");
-    const registerDateInput = editPopup.querySelector("#edit-regdate");
 
-    firstnameInput.value = user.firstname;
-    lastnameInput.value = user.lastname;
-    usernameInput.value = user.username;
-    passwordInput.value = user.password;
-    emailInput.value = user.email;
-    phoneInput.value = user.phone;
-    registerDateInput.value = user.registerDate;
+    firstnameInput.value = user.ACCOUNT_FNAME;
+    lastnameInput.value = user.ACCOUNT_LNAME;
+    usernameInput.value = user.ACCOUNT_USERNAME;
+    passwordInput.value = user.ACCOUNT_PASSWORD;
+    emailInput.value = user.ACCOUNT_EMAIL;
+    phoneInput.value = user.ACCOUNT_PNUMBER;
 
     // Show the popup
     showPopup();
@@ -66,7 +94,7 @@ function handleEditButtonClick(event) {
     closeBtn.removeEventListener("click", handleCloseButtonClick);
 
     // Handle save button click
-    saveBtn.addEventListener("click", () => {
+    saveBtn.addEventListener("click", async () => {
         // Update user attributes with form values
         const updatedFirstname = firstnameInput.value;
         const updatedLastname = lastnameInput.value;
@@ -74,35 +102,59 @@ function handleEditButtonClick(event) {
         const updatedPassword = passwordInput.value;
         const updatedEmail = emailInput.value;
         const updatedPhone = phoneInput.value;
-        const updatedRegisterDate = registerDateInput.value;
 
         // Basic validation (can be extended)
-        if (!updatedFirstname || !updatedLastname || !updatedUsername || !updatedPassword || !updatedEmail || !updatedPhone || !updatedRegisterDate) {
+        if (!updatedFirstname || !updatedLastname || !updatedUsername || !updatedPassword || !updatedEmail || !updatedPhone) {
             alert("Please fill in all required fields.");
             return; // Prevent update if validation fails
         }
 
         // Update the user in the array
-        users[userIndex] = {
-            ...user,
-            firstname: updatedFirstname,
-            lastname: updatedLastname,
-            username: updatedUsername,
-            password: updatedPassword,
-            email: updatedEmail,
-            phone: updatedPhone,
-            registerDate: updatedRegisterDate
+        const updatedUser = {
+            ACCOUNT_FNAME: updatedFirstname,
+            ACCOUNT_LNAME: updatedLastname,
+            ACCOUNT_PNUMBER: updatedPhone, 
+            ACCOUNT_EMAIL: updatedEmail,
+            ACCOUNT_USERNAME: updatedUsername,
+            ACCOUNT_PASSWORD: updatedPassword,
         };
 
-        // Update user list
-        displayUsers(users);
+        try {
+            const response = await fetch(`http://localhost:8085/api/users/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user: updatedUser })
+            });
 
-        // Close the popup
-        hidePopup();
+            if (!response.ok) {
+                throw new Error('Failed to update user.');
+            }
 
-        // Reattach event listeners for edit and delete buttons
-        attachEditButtonListeners();
-        attachDeleteButtonListeners();
+            const data = await response.json();
+            if (data.error) {
+                throw new Error(data.message);
+            }
+
+            // Update the user in the local array
+            users[userIndex] = { ...users[userIndex], ...updatedUser };
+
+            // Update user list display
+            displayUsers(users);
+
+            // Close the edit popup after successful update
+            hidePopup();
+
+            // Reattach event listeners for edit and delete buttons
+            attachEditButtonListeners();
+            attachDeleteButtonListeners();
+
+            alert('User updated successfully.');
+        } catch (error) {
+            console.error('Error updating user:', error.message);
+            alert('Failed to update user. Please try again.');
+        }
     });
 
     // Handle close button click
@@ -137,8 +189,8 @@ function handleCloseButtonClick(event) {
 // Function to handle the delete button click
 function handleDeleteButtonClick(event) {
     const button = event.target;
-    const userId = parseInt(button.getAttribute("data-id"));
-    const userIndex = users.findIndex(user => user.id === userId);
+    const userId = button.getAttribute("data-id");
+    const userIndex = users.findIndex(user => user.ACCOUNT_ID === userId);
     if (userIndex === -1) {
         console.error("User not found");
         return;
@@ -149,26 +201,46 @@ function handleDeleteButtonClick(event) {
 }
 
 // Event listener for the confirm delete button click
-document.getElementById("confirm-delete").addEventListener("click", function () {
-    const userId = parseInt(document.getElementById("delete-popup").getAttribute("data-user-id"));
-    const userIndex = users.findIndex(user => user.id === userId);
+document.getElementById("confirm-delete").addEventListener("click", async function () {
+    const userId = (document.getElementById("delete-popup").getAttribute("data-user-id"));
+    const userIndex = users.findIndex(user => user.ACCOUNT_ID === userId);
     if (userIndex === -1) {
         console.error("User not found");
         return;
     }
 
-    // Perform deletion
-    users.splice(userIndex, 1);
+    try {
+        const response = await fetch(`http://localhost:8085/api/users/${userId}`, {
+            method: 'DELETE',
+        });
 
-    // Update user list
-    displayUsers(users);
+        if (!response.ok) {
+            throw new Error('Failed to delete user.');
+        }
 
-    // Hide the delete confirmation popup
-    hideDeletePopup();
+        const data = await response.json();
+        if (data.error) {
+            throw new Error(data.message);
+        }
 
-    // Reattach
-    attachEditButtonListeners();
-    attachDeleteButtonListeners();
+        // Remove the deleted user from the local users array
+        users.splice(userIndex, 1);
+
+        // Update user list on the UI
+        displayUsers(users);
+
+        // Hide the delete confirmation popup
+        hideDeletePopup();
+
+        // Reattach event listeners for edit and delete buttons
+        attachEditButtonListeners();
+        attachDeleteButtonListeners();
+
+        alert('User deleted successfully.');
+    } catch (error) {
+        console.error('Error deleting user:', error.message);
+        alert('Failed to delete user. Please try again.');
+    }
 });
 
 // Event listener for the cancel delete button click
@@ -230,8 +302,20 @@ function handleAddUserButtonClick(event) {
     showAddUserPopup();
 }
 
+function generateUserId() {
+    const maxUserId = users.reduce((maxId, user) => {
+        // Parse the current ACCOUNT_ID as an integer to handle leading zeros correctly
+        const currentId = parseInt(user.ACCOUNT_ID, 10);
+        return currentId > maxId ? currentId : maxId;
+    }, 0);
+
+    // Generate a new ACCOUNT_ID that is one more than the maximum found
+    const newUserId = (maxUserId + 1).toString().padStart(3, '0'); // Ensure 3-digit format with leading zeros
+    return newUserId;
+}
+
 // Function to handle the save button click for adding a new user
-function handleAddUserSaveButtonClick() {
+async function handleAddUserSaveButtonClick() {
     // Get input values
     const newFirstName = document.getElementById("add-fname").value;
     const newLastName = document.getElementById("add-lname").value;
@@ -239,36 +323,58 @@ function handleAddUserSaveButtonClick() {
     const newPassword = document.getElementById("add-password").value;
     const newEmail = document.getElementById("add-email").value;
     const newPhone = document.getElementById("add-phonenum").value;
-    const newRegisterDate = document.getElementById("add-regdate").value;
 
     // Basic validation
-    if (!newFirstName || !newLastName || !newUsername || !newPassword || !newEmail || !newPhone || !newRegisterDate) {
+    if (!newFirstName || !newLastName || !newUsername || !newPassword || !newEmail || !newPhone) {
         alert("Please fill in all required fields with valid values.");
         return;
     }
 
-    // Add the new user to the list (this should be replaced with database insertion logic)
-    const newUser = {
-        id: users.length + 1, // Assuming IDs are incremental
-        firstname: newFirstName,
-        lastname: newLastName,
-        username: newUsername,
-        password: newPassword,
-        email: newEmail,
-        phone: newPhone,
-        registerDate: newRegisterDate
-    };
-    users.push(newUser);
+    try {
+        const newUserId = await generateUserId(); // Assuming generateUserId() returns a promise
+        console.log(newUserId)
+        const currentDate = new Date();
 
-    // Display the updated user list
-    displayUsers(users);
+        const newUser = {
+            ACCOUNT_ID: newUserId, // Assuming IDs are incremental
+            ACCOUNT_FNAME: newFirstName,
+            ACCOUNT_LNAME: newLastName,
+            ACCOUNT_PNUMBER: newPhone, 
+            ACCOUNT_EMAIL: newUsername,
+            ACCOUNT_USERNAME: newUsername,
+            ACCOUNT_PASSWORD: newPassword,
+            ACCOUNT_LAST_LOGIN: currentDate.toISOString().slice(0, 19).replace('T', ' '),
+            ACCOUNT_CREATION_DATE: currentDate.toISOString().slice(0, 19).replace('T', ' ')
+        };
 
-    // Hide the add user popup
-    hideAddUserPopup();
+        const response = await fetch('http://localhost:8085/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user: newUser })
+        });
 
-    // Reattach
-    attachEditButtonListeners();
-    attachDeleteButtonListeners();
+        if (!response.ok) {
+            throw new Error('Failed to add new user.');
+        }
+
+        const data = await response.json();
+        const insertedUser = data.user;
+
+        // Assuming the response contains the inserted user data with ACCOUNT_ID
+
+        users.push(insertedUser);
+        displayUsers(users);
+        hideAddUserPopup();
+        attachEditButtonListeners();
+        attachDeleteButtonListeners();
+        alert('User added successfully.');
+       
+    } catch (error) {
+        console.error('Error adding user:', error.message);
+        alert('Failed to add new user. Please try again.');
+    }
 }
 
 // Function to handle the click event of the "Cancel" button in the add user popup
@@ -292,8 +398,17 @@ function attachOpenAddPopupButtonListener() {
     openAddUserPopupButton.addEventListener("click", showAddUserPopup);
 }
 
-// Call functions to display users and attach event listeners
-displayUsers(users);
-attachOpenAddPopupButtonListener();
-attachEditButtonListeners();
-attachDeleteButtonListeners();
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        await fetchData(users); // Pass the 'users' array to fetchData()
+
+        // Now you can use the 'users' array for further processing (e.g., display in a table)
+        displayUsers(users);
+        attachEditButtonListeners();
+        attachDeleteButtonListeners();
+        attachOpenAddPopupButtonListener();
+    } catch (error) {
+        console.error('Failed to fetch users:', error);
+        // Handle error (e.g., display an error message to the user)
+    }
+});
