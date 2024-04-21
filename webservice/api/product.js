@@ -1,4 +1,5 @@
 const database = require("../model/furnihub_db.js");
+
 const express = require('express');
 const router = express.Router();
 router.use(express.json());

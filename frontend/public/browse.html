@@ -41,12 +41,12 @@
     <!-- Popup Container -->
     <div class="popup-container hidden" id="popupContainer">
         <div class="popup">
-            <form action="http://localhost:8085/api/products/adv-search" method="post" onsubmit="onSubmit()">
+            <form action="/products" method="get">
                 <fieldset>
                     <legend>Advanced Search</legend>
                     <div class="input-group">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" placeholder="Enter name of products" name="queryString">
+                        <input type="text" id="name" placeholder="Enter name of products" name="searchString">
                     </div>
 
                     <div class="input-group">
