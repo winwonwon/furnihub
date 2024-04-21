@@ -5,9 +5,19 @@ const express = require('express')
 const cors = require("cors")
 const path = require('path')
 const dotenv = require("dotenv")
+const session = require("express-session")
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:8080' }));
+app.use(cors({ 
+    origin: 'http://localhost:8080',
+    credentials: true
+}));
+app.use(session({
+    secret: "bobo",
+    resave: true,
+    saveUninitialized: true,
+    maxAge: 3600
+}))
 app.use("/api", router)
 dotenv.config()
 

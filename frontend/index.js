@@ -33,6 +33,14 @@ router.get("/login", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "login.html"))
 })
 
+router.get("/admin", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "loginstaff.html"))
+})
+
+router.get("/admin-landing", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "stafflandingpage.html"))
+})
+
 router.get("/mycart", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "mycart.html"))
 })
