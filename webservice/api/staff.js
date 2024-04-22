@@ -42,7 +42,7 @@ router.route("/")
             const isSuccess = result.length == 1
             if (isSuccess) {
                 req.session.isAdmin = true
-                res.status(200).redirect("http://localhost:8080/admin-landing") 
+                res.status(200).send("success")
                 console.log(`Admin ${result[0].ACCOUNT_USERNAME} has logged in.`)
             } else {
                 res.status(502).send("WHO ARE YOU DUH?")
