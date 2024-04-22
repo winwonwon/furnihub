@@ -4,11 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="loginstaff.css">
     <title>Log in staff</title>
 </head>
 
 <body>
+    <div class="menu_icons" id="menuIcon">
+        <i class='bx bx-menu'></i> <!-- menu icon -->
+    </div>
+    
+    <!-- nav menu -->
+    <nav class="navigation" id="navigation">
+        <div class="menu-container">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/browse">Browse</a></li>
+                <li><a href="/mycart">My Cart</a></li>
+                <li><a href="/account">My Account</a></li>
+                <li><a href="/about-us">About Us</a></li>
+            </ul>
+        </div>
+
+        <button class="close_icons" id="closeIcon">
+            <i class='bx bx-x'></i> <!-- close button for the nav menu -->
+        </button>
+    </nav>
+
     <div class="staff">
         <form action="http://localhost:8085/api/staff" method="post">
             <img src="https://drive.google.com/thumbnail?id=1-WnilJj4XpP0UaIWgQr7bjhB_EAjKaWc">
@@ -33,6 +60,9 @@
             <button type="submit" class="btn">LOG IN</button>
         </form>
     </div>
+
+    <script src="loginstaff.js"></script>
+
 </body>
 
 </html>
