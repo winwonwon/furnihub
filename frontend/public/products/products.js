@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     queryString: searchString,
                     category: category,
                     room: room,
-                    brand, brand,
+                    brand: brand,
                     price: price
                 })
             });
