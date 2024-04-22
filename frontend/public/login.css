@@ -9,18 +9,93 @@
 
 body{
     background: #f9f8f7;
-    padding-bottom: 50px;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    /* min-height: 100vh; */
+}
+
+.menu_icons {
+    text-align: right;
+    margin: 20px;
+    margin-left: 300px;
+    font-size: 23px;
+    transform: translateY(-10%);
+    transform: translateX(-1%);
+}
+
+.menu_icons i {
+    font-size: 45px;
+    color: #153147;
+    cursor: pointer;
+}
+
+.menu_icons i:hover {
+    color: #ADB8BB;
+}
+
+.navigation {
+    background-color: #153147;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    right: 100%;
+    width: 500px;
+    z-index: 1000;
+    transition: left 1s ease;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    justify-content: center;
+}
+
+.menu-container ul li {
+    margin-bottom: 40px;
+    list-style: none;
+    /* Remove default list styling */
+
+}
+
+.menu-container ul li a {
+    color: #EDEAE4;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.menu-container ul li a:hover {
+    color: #ADB8BB;
+}
+
+
+.close_icons i {
+    color: #EDEAE4;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close_icons i:hover {
+    color: #ADB8BB;
+}
+
+/* Showing the nav menu when active */
+.navigation.active {
+    right: 0px;
 }
 
 img{
      display: flex;
      justify-content: center;
      align-items: center; 
-     max-width: 330px; /*500 200*/
+     max-width: 330px; 
      height: 220px;
 }
       
@@ -32,10 +107,14 @@ img{
 
 .login1 .input-box{
     position: relative;
-
+    text-align: center;
+    width: 300px;
 }
 
 .input-box input{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
     width: 100%;
     height: 100%;
     background: transparent;
@@ -47,20 +126,28 @@ img{
 
 .input-box i{
     position: absolute;
-    right: 20px;
+    right: -45px;
     top: 50%;
     transform: translateY(-20%);
     font-size: 20px;
+}
+
+.login1{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 .login1 .remember-forgot{
     display: flex;
     justify-content: space-between;
     font-size: 15px;
-    
+
 }
 
 .login1 .btn{
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 45px;
     background: #153147;

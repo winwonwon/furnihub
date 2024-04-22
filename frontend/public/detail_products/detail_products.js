@@ -1,6 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     // find the back icon element
     const backIcon = document.getElementById("backIcon");
+    var menubar = document.getElementById("menuIcon");
+    var navigation = document.getElementById("navigation");
+    var closeIcon = document.getElementById("closeIcon");
+
+    menubar.addEventListener("click", function () {
+        navigation.classList.toggle("active");
+    });
+
+    // Close nav menu when close icon is clicked
+    closeIcon.addEventListener("click", function () {
+        navigation.classList.remove("active");
+    });
 
     // add click event listener to the back icon
     backIcon.addEventListener("click", function () {
@@ -19,9 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
             room: "Living room",
             brand: "IKEA",
             images: ["https://drive.google.com/thumbnail?id=1o-63BTaxmSOVdNvbGTeHSNEe0_tMrmhL",
-            "https://drive.google.com/thumbnail?id=1aeVkjCThd3yCta7Rlndw4bdddj8jcoZx", 
-            "https://drive.google.com/thumbnail?id=1Yjuz2r6dWB2-sfDKI9mNAR7FyawMmee3", 
-            "https://drive.google.com/thumbnail?id=1uZIFvxzps8B_TXxBmmaUPQLzDla9LYdH"],
+                "https://drive.google.com/thumbnail?id=1aeVkjCThd3yCta7Rlndw4bdddj8jcoZx",
+                "https://drive.google.com/thumbnail?id=1Yjuz2r6dWB2-sfDKI9mNAR7FyawMmee3",
+                "https://drive.google.com/thumbnail?id=1uZIFvxzps8B_TXxBmmaUPQLzDla9LYdH"],
             price: 2590,
             color: "Birch veneer"
         },
@@ -50,11 +62,11 @@ document.addEventListener("DOMContentLoaded", function () {
             category: "Sofa",
             room: "Living room",
             brand: "IKEA",
-            
-            images: [ "https://drive.google.com/thumbnail?id=1WbN6OxvP-T6EPWfumFdDk_jDm7c5GmLB",
-            "https://drive.google.com/thumbnail?id=1ZRU7naGFlsTLHi1dmD7uTJwLniG6foLh",
-            "https://drive.google.com/thumbnail?id=1U21nT1-dxz0PQq5AWENJQiOOJTR8O88j", 
-            "https://drive.google.com/thumbnail?id=1sXCjQPTEHD1MAvxme9qNmbeZZTbrOX5e"],
+
+            images: ["https://drive.google.com/thumbnail?id=1WbN6OxvP-T6EPWfumFdDk_jDm7c5GmLB",
+                "https://drive.google.com/thumbnail?id=1ZRU7naGFlsTLHi1dmD7uTJwLniG6foLh",
+                "https://drive.google.com/thumbnail?id=1U21nT1-dxz0PQq5AWENJQiOOJTR8O88j",
+                "https://drive.google.com/thumbnail?id=1sXCjQPTEHD1MAvxme9qNmbeZZTbrOX5e"],
             price: 25950,
             color: "Beige"
         },
@@ -95,6 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     } else {
         // if product not found, redirect to browse page
-        window.location.href = "/browse";
+        // window.location.href = "/browse";
     }
 });

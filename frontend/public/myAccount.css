@@ -21,7 +21,7 @@ header {
     color: #ADB8BB;
 }
 
-.myAccount{
+.myAccount {
     color: #153147;
     text-align: center;
     margin: 20px;
@@ -32,7 +32,7 @@ header {
     color: #153147;
     padding: 0 5px;
     cursor: pointer;
-    margin-left: 1350px; 
+    margin-left: 1350px;
     margin-top: 10px;
 }
 
@@ -99,8 +99,10 @@ header {
     margin-top: 0px;
     margin-bottom: 0px;
     align-items: center;
-    width: 70%; /* Length of the line */
-    height: 1px; /* Thickness of the line */
+    width: 70%;
+    /* Length of the line */
+    height: 1px;
+    /* Thickness of the line */
     background-color: black;
 }
 
@@ -133,12 +135,15 @@ section {
 }
 
 .arrow {
-    margin-left: auto; /* Move ">" to the right */
-    color: #153147; /* Add color to the arrow */
-    margin-right: 10px; /* Add some space between the text and the arrow */
+    margin-left: auto;
+    /* Move ">" to the right */
+    color: #153147;
+    /* Add color to the arrow */
+    margin-right: 10px;
+    /* Add some space between the text and the arrow */
 }
 
-fieldset{
+fieldset {
     border: 1px solid;
     border-radius: 10px;
     border-color: rgb(0, 0, 0);
@@ -146,9 +151,12 @@ fieldset{
 
 
 .logout {
-    display: flex; /* Make the div a flex container */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
+    display: flex;
+    /* Make the div a flex container */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+    /* Center items horizontally */
     margin-top: 50px;
 }
 
@@ -161,7 +169,8 @@ fieldset{
     border-radius: 10px;
     border-color: #000000;
     width: 200px;
-    text-align: center; /* Center the text horizontally */
+    text-align: center;
+    /* Center the text horizontally */
     text-decoration: none;
 }
 

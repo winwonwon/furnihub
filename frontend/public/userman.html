@@ -8,7 +8,8 @@
   <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
   <title>User List</title>
   <link rel="stylesheet" href="userman.css">
 </head>
@@ -19,10 +20,30 @@
     <div class="back_icons" id="backIcon" onclick="window.location.href = '/admin-landing'">
       <h1>&lt;Back</h1>
     </div>
-    <h1>User Management</h1>
-    <div>
-      <i></i>
+
+    <h1 class="title">User Management</h1>
+
+    <div class="menu_icons" id="menuIcon">
+      <i class='bx bx-menu'></i> <!-- menu icon -->
     </div>
+    </div>
+
+    <!-- nav menu -->
+    <nav class="navigation" id="navigation">
+      <div class="menu-container">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/browse">Browse</a></li>
+          <li><a href="/mycart">My Cart</a></li>
+          <li><a href="/account">My Account</a></li>
+          <li><a href="/about-us">About Us</a></li>
+        </ul>
+      </div>
+
+      <button class="close_icons" id="closeIcon">
+        <i class='bx bx-x'></i> <!-- close button for the nav menu -->
+      </button>
+    </nav>
   </header>
 
   <div class="table">
@@ -95,9 +116,9 @@
 
   <div id="delete-popup" class="popup hidden">
     <div class="popup-content">
-        <p>Are you sure you want to delete this user?</p>
-        <button id="confirm-delete">Yes</button>
-        <button id="cancel-delete">Cancel</button>
+      <p>Are you sure you want to delete this user?</p>
+      <button id="confirm-delete">Yes</button>
+      <button id="cancel-delete">Cancel</button>
     </div>
   </div>
 

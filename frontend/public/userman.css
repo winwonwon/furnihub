@@ -1,194 +1,287 @@
-/* YUNG MAI SEDDDDDDa
-
-
-/* Center the h1 horizontally */
-
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Jost", sans-serif;
-    color: #153147;
-    font-weight: 600;
+  margin: 0;
+  padding: 0;
+  font-family: "Jost", sans-serif;
+  color: #153147;
+  font-weight: 600;
+}
+
+body {
+  background: #f9f8f7;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.menu_icons {
+  text-align: right;
+  margin: 20px;
+  font-size: 23px;
+  transform: translateY(-10%);
+  transform: translateX(-1%);
+}
+
+.menu_icons i {
+  font-size: 45px;
+  color: #153147;
+  cursor: pointer;
+}
+
+.menu_icons i:hover {
+  color: #ADB8BB;
+}
+
+.navigation {
+  background-color: #153147;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  right: 100%;
+  width: 500px;
+  z-index: 1000;
+  transition: left 1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-container ul li {
+  margin-bottom: 40px;
+  list-style: none;
+  /* Remove default list styling */
+
+}
+
+.menu-container ul li a {
+  color: #EDEAE4;
+  font-size: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.menu-container ul li a:hover {
+  color: #ADB8BB;
+}
+
+
+.close_icons i {
+  color: #EDEAE4;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 70px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close_icons i:hover {
+  color: #ADB8BB;
+}
+
+/* Showing the nav menu when active */
+.navigation.active {
+  right: 0px;
+}
+
+header {
+  background-color: #EDEAE4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Style the table */
+table {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 170px;
+  border-collapse: collapse;
+  /* Collapse border spacing */
+  width: 90%;
+  box-shadow: 0 0 10px #f2f2f2;
+  /* Set width to 80% of the container */
+}
+
+/* Style table headers */
+th {
+  font-weight: bold;
+  background-color: #EDEAE4;
+  /* Light gray background */
+  padding: 8px;
+  /* Add padding */
+  text-align: left;
+  /* Align text to the left */
+  border-bottom: 1px solid #ddd;
+  /* Add bottom border */
+}
+
+/* Style table cells */
+td {
+  font-weight: normal;
+  padding: 8px;
+  /* Add padding */
+  text-align: left;
+  /* Add bottom border */
+  border-bottom: none;
+}
+
+/* Style alternating row background */
+tr:nth-child(odd) td {
+  background-color: #f7f7f7;
+}
+
+tr:nth-child(even) td {
+  background-color: #ffffffe2;
+}
+
+.back_icons,
+.filter_icons {
+  cursor: pointer;
+}
+
+.back_icons h1:hover,
+.filter_icons i:hover {
+  color: #ADB8BB;
+}
+
+/* Style the popup container */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 10;
+  /* Ensure popup is above other elements */
+}
+
+.popup.hidden {
+  display: none;
+}
+
+/* Style the popup form */
+.popup form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popup form legend {
+  /* Targets all h2 elements within the popup form */
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* Style labels and inputs */
+.popup label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+.popup input[type="text"],
+.popup input[type="number"] {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style the buttons */
+.popup button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.popup button:hover {
+  background-color: #eee;
+}
+
+/* Style the close button (optional) */
+.popup #close-btn {
+  background-color: #ccc;
+}
+
+#delete-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 10;
+  /* Ensure popup is above other elements */
+}
+
+#delete-popup.hidden {
+  display: none;
+}
+
+#edit-user-popup input {
+  border: none;
+  /* Remove the border */
+  outline: none;
+  /* Remove the outline */
+  background-color: transparent;
+  /* Make the background transparent */
+  border-bottom: 1px solid black;
+  /* Add underline */
+  padding-bottom: 0px;
+  width: 20%;
+  /* Set the width of the input field */
+  max-width: 300px;
+  /* Optionally, set a maximum width */
+}
+
+#add-user-popup input {
+  border: none;
+  /* Remove the border */
+  outline: none;
+  /* Remove the outline */
+  background-color: transparent;
+  /* Make the background transparent */
+  border-bottom: 1px solid black;
+  /* Add underline */
+  padding-bottom: 0px;
+  width: 20%;
+  /* Set the width of the input field */
+  max-width: 300px;
+  /* Optionally, set a maximum width */
+}
+
+#open-add-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .ikea {
+    min-width: 400px;
+    /* Set a minimum width for the container */
+    margin: 50px;
+    /* Center the container horizontally */
   }
-  
-  body {
-    background: #f9f8f7;
-  }
-  
-  header {
-    background-color: #EDEAE4;
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    padding: 20px;
-    position: fixed;
-    width: 98%;
-    top: 0;
-    z-index: 1000; 
-  }
-  
-  /* Style the table */
-  table {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
-    border-collapse: collapse;
-    /* Collapse border spacing */
-    width:90%;
-    box-shadow: 0 0 10px #f2f2f2;
-    /* Set width to 80% of the container */
-  }
-  
-  /* Style table headers */
-  th {
-    font-weight: bold;
-    background-color: #EDEAE4;
-    /* Light gray background */
-    padding: 8px;
-    /* Add padding */
-    text-align: left;
-    /* Align text to the left */
-    border-bottom: 1px solid #ddd;
-    /* Add bottom border */
-  }
-  
-  /* Style table cells */
-  td {
-    font-weight: normal;
-    padding: 8px;
-    /* Add padding */
-    text-align: left;
-    /* Add bottom border */
-    border-bottom: none;
-  }
-  
-  /* Style alternating row background */
-  tr:nth-child(odd) td {
-    background-color: #f7f7f7;
-  }
-  
-  tr:nth-child(even) td {
-    background-color: #ffffffe2;
-  }
-  
-  .back_icons,
-  .filter_icons {
-    cursor: pointer;
-  }
-  
-  .back_icons h1:hover,
-  .filter_icons i:hover {
-    color: #ADB8BB;
-  }
-  /* Style the popup container */
-  .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 10; /* Ensure popup is above other elements */
-  }
-  
-  .popup.hidden {
-    display: none;
-  }
-  
-  /* Style the popup form */
-  .popup form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .popup form legend { /* Targets all h2 elements within the popup form */
-    text-align: center;
-    font-weight: bold;
-    font-size: larger;
-  }
-  
-  /* Style labels and inputs */
-  .popup label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-left: 20px;
-  }
-  
-  .popup input[type="text"],
-  .popup input[type="number"] {
-    padding: 12px 20px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  /* Style the buttons */
-  .popup button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .popup button:hover {
-    background-color: #eee;
-  }
-  
-  /* Style the close button (optional) */
-  .popup #close-btn {
-    background-color: #ccc;
-  }
-  
-  #delete-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 10; /* Ensure popup is above other elements */
-  }
-  
-  #delete-popup.hidden {
-    display: none;
-  }
-  
-  #edit-user-popup input {
-    border: none; /* Remove the border */
-      outline: none; /* Remove the outline */
-      background-color: transparent; /* Make the background transparent */
-      border-bottom: 1px solid black; /* Add underline */
-      padding-bottom: 0px;
-      width: 20%; /* Set the width of the input field */
-      max-width: 300px; /* Optionally, set a maximum width */
-  }
-  
-  #add-user-popup input {
-    border: none; /* Remove the border */
-      outline: none; /* Remove the outline */
-      background-color: transparent; /* Make the background transparent */
-      border-bottom: 1px solid black; /* Add underline */
-      padding-bottom: 0px;
-      width: 20%; /* Set the width of the input field */
-      max-width: 300px; /* Optionally, set a maximum width */
-  }
-  
-  #open-add-popup {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .ikea {
-        min-width: 400px; /* Set a minimum width for the container */
-        margin: 50px; /* Center the container horizontally */
-    }
-  }
+}

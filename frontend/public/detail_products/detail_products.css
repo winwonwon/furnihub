@@ -4,17 +4,96 @@
     font-family: "Jost", sans-serif;
     color: #153147;
     font-weight: 600;
+    scroll-behavior: smooth;
 }
 
 body {
-    scroll-behavior: smooth;
+    padding-bottom: 50px;
     background: #f9f8f7;
 }
 
+.menu_icons {
+    text-align: right;
+    margin: 20px;
+    margin-left: 300px;
+    font-size: 23px;
+    transform: translateY(-10%);
+    transform: translateX(-1%);
+}
+
+.menu_icons i {
+    font-size: 45px;
+    color: #153147;
+    cursor: pointer;
+}
+
+.menu_icons i:hover {
+    color: #ADB8BB;
+}
+
+.navigation {
+    background-color: #153147;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    right: 100%;
+    width: 500px;
+    z-index: 1000;
+    transition: left 1s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-container ul li {
+    margin-bottom: 40px;
+    list-style: none;
+    /* Remove default list styling */
+
+}
+
+.menu-container ul li a {
+    color: #EDEAE4;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.menu-container ul li a:hover {
+    color: #ADB8BB;
+}
+
+
+.close_icons i {
+    color: #EDEAE4;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close_icons i:hover {
+    color: #ADB8BB;
+}
+
+/* Showing the nav menu when active */
+.navigation.active {
+    right: 0px;
+}
+
+
 header {
     background-color: #EDEAE4;
-    padding: 20px;
+    padding: 25px;
     display: flex;
+    margin-top: -91px;
     box-shadow: 0 px 4px rgba(0, 0, 0, 0.1);
 }
 
