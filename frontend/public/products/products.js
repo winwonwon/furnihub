@@ -1,7 +1,7 @@
 // function to generate HTML for each product
 function generateProductHTML(product) {
     return `
-        <div class="products" data-id="${product.id}">
+        <div class="products" data-id="${product.PRODUCT_ID}">
             <img src="${product.PRODUCT_PICTURE1}">
             <div class="products_des">
                 <h2>${product.PRODUCT_NAME}</h2>
@@ -29,11 +29,8 @@ function displayProducts(products) {
     productItems.forEach(item => {
         item.addEventListener('click', function () {
             const productId = parseInt(item.getAttribute('data-id'));
-            const product = products.find(p => p.id === productId);
-            if (product) {
-                // redirect to detail page passing product id
-                window.location.href = `../detail_products/detail_products.html?id=${productId}`;
-            }
+            // redirect to detail page passing product id
+            window.location.href = `/detail-products?id=${productId}`;
         });
     });
 }
