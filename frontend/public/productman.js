@@ -1,5 +1,22 @@
 const products = []; // Initialize an empty array to store fetched products
 
+document.addEventListener("DOMContentLoaded", function () {
+    // find the back icon element
+    const backIcon = document.getElementById("backIcon");
+    var menubar = document.getElementById("menuIcon");
+    var navigation = document.getElementById("navigation");
+    var closeIcon = document.getElementById("closeIcon");
+
+    menubar.addEventListener("click", function () {
+        navigation.classList.toggle("active");
+    });
+
+       // Close nav menu when close icon is clicked
+       closeIcon.addEventListener("click", function () {
+        navigation.classList.remove("active");
+    });
+});
+
 function fetchData(products) {
     return fetch('http://localhost:8085/api/products')
         .then(response => {
@@ -118,20 +135,25 @@ function handleEditButtonClick(event) {
             PRODUCT_BRAND: brandInput.value,
             PRODUCT_QUANTITY: parseInt(quantityInput.value),
             PRODUCT_PRICE: parseFloat(priceInput.value),
-            PRODUCT_COLOR: colorInput.value,
-            // PRODUCT_PICTURE1: picture1Input.value,
-            // PRODUCT_PICTURE2: picture2Input.value,
-            // PRODUCT_PICTURE3: picture3Input.value,
-            // PRODUCT_PICTURE4: picture4Input.value
+            PRODUCT_COLOR: colorInput.value
         };
 
+        const fileInput = document.getElementById("edit-images");
+        const formData = new FormData()
+        formData.append("PRODUCT_NAME", nameInput.value);
+        formData.append("PRODUCT_DESCRIPTION", descriptionInput.value);
+        formData.append("PRODUCT_CATEGORY", categoryInput.value);
+        formData.append("PRODUCT_ROOM", roomInput.value);
+        formData.append("PRODUCT_BRAND", brandInput.value);
+        formData.append("PRODUCT_QUANTITY", parseInt(quantityInput.value));
+        formData.append("PRODUCT_PRICE", parseFloat(priceInput.value));
+        formData.append("PRODUCT_COLOR", colorInput.value);
+        if (fileInput.files.length > 0)
+            formData.append("image", fileInput.files[0])
         try {
             const response = await fetch(`http://localhost:8085/api/products/${productId}`, {
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ product: updatedProduct })
+                body: formData
             });
 
             if (!response.ok) {
@@ -365,32 +387,26 @@ async function handleAddSaveButtonClick() {
 
     try {
         const newProductId = await generateProductId(); // Assuming generateProductId() returns a promise
+        const fileInput = document.getElementById("add-images");
+        const formData = new FormData()
 
-        const newProduct = {
-            PRODUCT_ID: newProductId,
-            PRODUCT_NAME: newName,
-            PRODUCT_DESCRIPTION: newDescription,
-            PRODUCT_CATEGORY: newCategory,
-            PRODUCT_ROOM: newRoom,
-            PRODUCT_BRAND: newBrand,
-            PRODUCT_QUANTITY: newQuantity,
-            PRODUCT_PRICE: newPrice,
-            PRODUCT_COLOR: newColor,
-            PRODUCT_PICTURE1: "",
-            PRODUCT_PICTURE2: "",
-            PRODUCT_PICTURE3: "",
-            PRODUCT_PICTURE4: ""
-        };
-
+        formData.append("PRODUCT_ID", newProductId);
+        formData.append("PRODUCT_NAME", newName);
+        formData.append("PRODUCT_DESCRIPTION", newDescription);
+        formData.append("PRODUCT_CATEGORY", newCategory);
+        formData.append("PRODUCT_ROOM", newRoom);
+        formData.append("PRODUCT_BRAND", newBrand);
+        formData.append("PRODUCT_QUANTITY", newQuantity);
+        formData.append("PRODUCT_PRICE", newPrice);
+        formData.append("PRODUCT_COLOR", newColor);
+        formData.append("image", fileInput.files[0]);
         const response = await fetch('http://localhost:8085/api/products', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ product: newProduct })
+            body: formData
         });
 
         if (!response.ok) {
+            console.log(response)
             throw new Error('Failed to add new product.');
         }
 
