@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function showSearchResults(searchString) {
         try {
-            const response = await fetch('http://localhost:8085/api/products/search', {
+            const response = await fetch('http://localhost:8080/products-search', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function showAdvancedSearchResults(searchString, brand, room, category, price) {
         try {
-            const response = await fetch('http://localhost:8085/api/products/adv-search', {
+            const response = await fetch('http://localhost:8080/products-advsearch', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -126,10 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const category = urlParams.get("category")
         const price = urlParams.get("price")
         showAdvancedSearchResults(searchString, brand, room, category, price)
-    } else if (searchString) {
-        showSearchResults(searchString)
+    } else {
+        showSearchResults(searchString || '')
     }
-
-    // display products when the page loads initially
-    showSearchResults("")
 });

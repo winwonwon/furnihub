@@ -7,12 +7,11 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
+
 // Route for '/api/users'
 router.route("/")
     .get((req, res, next) => {
-        if (!req.session.isAdmin) 
-            return res.status(502).send("Unauthorized")
-
+        // console.log(req)
         database.query('SELECT * FROM USER', function (error, results) {
             if (error) {
                 console.error('Error fetching users:', error);
@@ -22,11 +21,7 @@ router.route("/")
         });
     })
     .post((req, res, next) => {
-        if (!req.session.isAdmin) 
-            return res.status(502).send("Unauthorized")
-
         let user = req.body.user;
-
         if (!user) {
             return res.status(400).send({ error: true, message: 'Please provide user information' });
         }
@@ -51,9 +46,6 @@ router.route("/")
 // Route for '/api/users/:id'
 router.route("/:id")
     .get((req, res, next) => {
-        if (!req.session.isAdmin) 
-            return res.status(502).send("Unauthorized")
-
         let userId = req.params.id;
         if (!userId) {
             return res.status(400).send({ error: true, message: 'Please provide user ID' });
@@ -73,9 +65,6 @@ router.route("/:id")
         });
     })
     .put((req, res, next) => {
-        if (!req.session.isAdmin) 
-            return res.status(502).send("Unauthorized")
-
         let userId = req.params.id;
         let user = req.body.user;
         if (!user) {
@@ -99,11 +88,7 @@ router.route("/:id")
         });
     })
     .delete((req, res, next) => {
-        if (!req.session.isAdmin) 
-            return res.status(502).send("Unauthorized")
-
         let userId = req.params.id;
-
         if (!userId) {
             return res.status(400).send({ error: true, message: 'Please provide user ID' });
         }

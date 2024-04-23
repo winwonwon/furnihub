@@ -1,10 +1,28 @@
 const express = require("express");
 const path    = require("path")
 const dotenv  = require("dotenv");
-const http    = require("http")
-const querystring = require("querystring")
+const axios    = require("axios")
 const session = require("express-session")
 dotenv.config()
+
+async function sendJsonRequest(port, path, method, body) {
+    try {
+        const response = await axios({
+            method: method,
+            url: `http://localhost:${port}${path}`,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: body
+        });
+
+        return response.data;
+    } catch (error) {
+        // Handle error
+        console.error("Error:", error.response.data);
+        throw error;
+    }
+}
 
 const app = express();
 app.use(session({
@@ -29,8 +47,70 @@ router.get("/products", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "products", "products.html"))
 })
 
+router.get("/users", (req, res) => {
+    sendJsonRequest(8085, "/api/users", "GET")
+    .then((response) => res.send(response))
+})
+
+router.put("/users/:id", (req, res) => {
+    sendJsonRequest(8085, "/api/users/"+req.params.id, "PUT", req.body)
+    .then((response) => res.send(response))
+})
+
+router.delete("/users/:id", (req, res) => {
+    sendJsonRequest(8085, "/api/users/"+req.params.id, "DELETE")
+    .then((response) => res.send(response))
+})
+
+router.post("/users", (req, res) => {
+    sendJsonRequest(8085, "/api/users", "POST", req.body)
+    .then((response) => res.send(response))
+})
+
+router.post("/products-advsearch", (req, res) => {
+    const data = JSON.stringify({
+        queryString: req.body.queryString,
+        category: req.body.category,
+        room: req.body.room,
+        brand: req.body.brand,
+        price: req.body.price
+    })
+
+    sendJsonRequest(8085, "/api/products/adv-search", "POST", data)
+    .then((response) => res.send(response))
+})
+
+router.post("/products-search", (req, res) => {
+    const data = JSON.stringify({
+        queryString: req.body.queryString
+    })
+
+    sendJsonRequest(8085, "/api/products/search", "POST", data)
+    .then((response) => res.send(response))
+})
+
+router.get("/get-products", (req, res) => {
+    sendJsonRequest(8085, "/api/products", "GET")
+    .then((response) => res.send(response))
+})
+
+router.put("/update-products", (req, res) => {
+    
+})
+
+router.post("/insert-products", (req, res) => {
+    sendJsonRequest(8085, "/api/products/search", "POST", req.body)
+    .then((response) => res.send(response))
+})
+
 router.get("/detail-products", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "detail_products", "detail_products.html"))
+})
+
+router.get("/detail-products/:id", (req, res) => {
+    const id = req.params.id
+    sendJsonRequest(8085, `/api/products/${id}`, "GET")
+    .then((response) => res.send(response))
 })
 
 router.get("/about-us", (req, res) => {
@@ -59,35 +139,15 @@ router.post("/admin", (req, res) => {
         username: req.body.username,
         password: req.body.password
     })
-    const request = http.request({
-        host: "localhost",
-        port: 8085,
-        path: "/api/staff",
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Content-Length": Buffer.byteLength(data)
-        },
-    }, (http_response) => {
-        let responseData = '';
-        http_response.setEncoding("utf-8")
-        http_response.on("data", (chunk) => {
-            responseData += chunk
-        })
-
-        http_response.on("end", () => {
-            if (responseData == "success") {
-                req.session.isAdmin = true
-                res.redirect("/admin-landing")
-            } else {
-                res.status(502).redirect("/admin")
-            }
-        })
+    sendJsonRequest(8085, "/api/staff", "POST", data)
+    .then((response) => {
+        if (response == "success") {
+            req.session.isAdmin = true
+            res.redirect("/admin-landing")
+        } else {
+            res.status(502).redirect("/admin")
+        }
     })
-
-    request.write(data);
-    request.end()
-
 })
 
 router.get("/admin-landing", (req, res) => {
@@ -114,10 +174,10 @@ router.get("/product-man", (req, res) => {
 })
 
 router.get("/user-man", (req, res) => {
-    if (!req.session.isAdmin) {
-        res.redirect("/admin")
-        return
-    }
+    // if (!req.session.isAdmin) {
+    //     res.redirect("/admin")
+    //     return
+    // }
 
     res.sendFile(path.join(__dirname, "public", "userman.html"))
 })

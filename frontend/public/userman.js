@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const users = []; // Initialize an empty array to store fetched users
 
     function fetchData(users) {
-        return fetch('http://localhost:8085/api/users', {
+        return fetch('http://localhost:8080/users', {
             method: 'GET',
             credentials: "include",
             headers: {
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             try {
-                const response = await fetch(`http://localhost:8085/api/users/${userId}`, {
+                const response = await fetch(`http://localhost:8080/users/${userId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch(`http://localhost:8085/api/users/${userId}`, {
+            const response = await fetch(`http://localhost:8080/users/${userId}`, {
                 method: 'DELETE',
             });
 
@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ACCOUNT_CREATION_DATE: currentDate.toISOString().slice(0, 19).replace('T', ' ')
             };
 
-            const response = await fetch('http://localhost:8085/api/users', {
+            const response = await fetch('http://localhost:8080/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openAddUserPopupButton.addEventListener("click", showAddUserPopup);
     }
 
-    document.addEventListener('DOMContentLoaded', async () => {
+    (async () => {
         try {
             await fetchData(users); // Pass the 'users' array to fetchData()
 
@@ -427,5 +427,5 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error('Failed to fetch users:', error);
             // Handle error (e.g., display an error message to the user)
         }
-    });
+    })()
 });
