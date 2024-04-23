@@ -410,6 +410,16 @@ async function handleAddSaveButtonClick() {
         attachDeleteButtonListeners();
         alert('Product added successfully.');
        
+        //clear form
+        document.getElementById("add-name").value = '';
+        document.getElementById("add-description").value = '';
+        document.getElementById("add-category").value = '';
+        document.getElementById("add-room").value = '';
+        document.getElementById("add-brand").value = '';
+        document.getElementById("add-quantity").value = '';
+        document.getElementById("add-price").value = '';
+        document.getElementById("add-color").value = '';
+        document.getElementById("add-images").value = '';
     } catch (error) {
         console.error('Error adding product:', error.message);
         alert('Failed to add new product. Please try again.');

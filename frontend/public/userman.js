@@ -387,6 +387,14 @@ document.addEventListener("DOMContentLoaded", function () {
             attachDeleteButtonListeners();
             alert('User added successfully.');
 
+            //clear form
+            document.getElementById("add-fname").value = '';
+            document.getElementById("add-lname").value = '';
+            document.getElementById("add-username").value = '';
+            document.getElementById("add-password").value = '';
+            document.getElementById("add-email").value = '';
+            document.getElementById("add-phonenum").value = '';
+            
         } catch (error) {
             console.error('Error adding user:', error.message);
             alert('Failed to add new user. Please try again.');
