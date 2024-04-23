@@ -116,13 +116,14 @@ header h1 {
     border: 1px solid #153147;
     cursor: pointer;
 }
-
 .products img {
     margin-top: 20px;
+    width: 300px;
+    height: 260px;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 80%;
+    object-fit: scale-down;
 }
-
 .products_des {
     font-size: 14px;
     text-align: left;
@@ -151,8 +152,9 @@ header h1 {
     }
 
     .products img {
-        margin-top: 40px;
+        width: 300px;
+        height: 260px;
         max-width: 100%;
-        max-height: 100%;
+        max-height: 80%;
     }
 }
