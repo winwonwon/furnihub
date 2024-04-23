@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchData(products) {
-    return fetch('http://localhost:8085/api/products')
+    return fetch('http://localhost:8080/get-products')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch products');
@@ -151,7 +151,7 @@ function handleEditButtonClick(event) {
         if (fileInput.files.length > 0)
             formData.append("image", fileInput.files[0])
         try {
-            const response = await fetch(`http://localhost:8085/api/products/${productId}`, {
+            const response = await fetch(`http://localhost:8080/update-products/${productId}`, {
                 method: 'PUT',
                 body: formData
             });
@@ -244,7 +244,7 @@ document.getElementById("confirm-delete").addEventListener("click", async functi
     }
 
     try {
-        const response = await fetch(`http://localhost:8085/api/products/${productId}`, {
+        const response = await fetch(`http://localhost:8080/delete-products/${productId}`, {
             method: 'DELETE',
         });
 
@@ -357,18 +357,6 @@ function handleAddButtonClick(event) {
     showAddPopup();
 }
 
-function generateProductId() {
-    // Find the maximum PRODUCT_ID from existing products
-    const maxProductId = products.reduce((maxId, product) => {
-        return product.PRODUCT_ID > maxId ? product.PRODUCT_ID : maxId;
-    }, 0);
-
-    // Generate a new PRODUCT_ID that is one more than the maximum found
-    const newProductId = maxProductId + 1;
-
-    return newProductId;
-}
-
 async function handleAddSaveButtonClick() {
     const newName = document.getElementById("add-name").value;
     const newDescription = document.getElementById("add-description").value;
@@ -386,11 +374,9 @@ async function handleAddSaveButtonClick() {
     }
 
     try {
-        const newProductId = await generateProductId(); // Assuming generateProductId() returns a promise
         const fileInput = document.getElementById("add-images");
         const formData = new FormData()
 
-        formData.append("PRODUCT_ID", newProductId);
         formData.append("PRODUCT_NAME", newName);
         formData.append("PRODUCT_DESCRIPTION", newDescription);
         formData.append("PRODUCT_CATEGORY", newCategory);
@@ -403,7 +389,7 @@ async function handleAddSaveButtonClick() {
         formData.append("PRODUCT_PICTURE2", '');
         formData.append("PRODUCT_PICTURE3", '');
         formData.append("PRODUCT_PICTURE4", '');
-        const response = await fetch('http://localhost:8085/api/products', {
+        const response = await fetch('http://localhost:8080/insert-products', {
             method: 'POST',
             body: formData
         });
@@ -415,7 +401,6 @@ async function handleAddSaveButtonClick() {
 
         const data = await response.json();
         const insertedProduct = data.product;
-
         // Assuming the response contains the inserted product data with PRODUCT_ID
 
         products.push(insertedProduct);

@@ -1,8 +1,10 @@
 const express = require("express");
-const path    = require("path")
+const path    = require("path");
 const dotenv  = require("dotenv");
-const axios    = require("axios")
-const session = require("express-session")
+const axios    = require("axios");
+const FormData = require("form-data")
+const session = require("express-session");
+const multer = require("multer")
 dotenv.config()
 
 async function sendJsonRequest(port, path, method, body) {
@@ -32,7 +34,7 @@ app.use(session({
     maxAge: 3600
 }))
 
-
+const upload = multer()
 const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
@@ -89,18 +91,94 @@ router.post("/products-search", (req, res) => {
     .then((response) => res.send(response))
 })
 
+router.delete("/delete-products/:id", (req, res) => {
+    sendJsonRequest(8085, "/api/products/"+req.params.id, "DELETE")
+    .then((response) => res.send(response))
+})
+
 router.get("/get-products", (req, res) => {
     sendJsonRequest(8085, "/api/products", "GET")
     .then((response) => res.send(response))
 })
 
-router.put("/update-products", (req, res) => {
-    
+router.put("/update-products/:id", upload.any(), (req, res) => {
+    const formData = new FormData();
+    req.files.forEach(file => {
+        formData.append(file.fieldname, file.buffer, {
+            filename: file.originalname,
+            contentType: file.mimetype
+        });
+    });
+
+    // Append other data to the FormData object if needed
+    Object.keys(req.body).forEach(key => {
+        formData.append(key, req.body[key]);
+    });
+
+    axios({
+        method: "PUT",
+        url: `http://localhost:8085/api/products/${req.params.id}`,
+        headers: {
+            ...formData.getHeaders() // Include FormData headers
+        },
+        data: formData
+    })
+    .then((response) => {
+        if (!response.error) {
+            res.send(response.data)
+        } else {
+            res.sendStatus(400)
+        }
+
+    })
+    .catch((e) => {
+        console.error(e)
+    })
 })
 
-router.post("/insert-products", (req, res) => {
-    sendJsonRequest(8085, "/api/products/search", "POST", req.body)
-    .then((response) => res.send(response))
+router.post("/insert-products", upload.any(), async (req, res) => {
+    try {
+        // If you need to handle files, you can access them in the `files` property of the request object
+        // Here, we convert files to FormData format to forward them along with other data
+        const formData = new FormData();
+        req.files.forEach(file => {
+            formData.append(file.fieldname, file.buffer, {
+                filename: file.originalname,
+                contentType: file.mimetype
+            });
+        });
+  
+        // Append other data to the FormData object if needed
+        Object.keys(req.body).forEach(key => {
+            formData.append(key, req.body[key]);
+        });
+
+        axios({
+            method: "POST",
+            url: `http://localhost:8085/api/products`,
+            headers: {
+                ...formData.getHeaders() // Include FormData headers
+            },
+            data: formData
+        })
+        .then((response) => {
+            if (!response.error) {
+                res.send(response.data)
+            } else {
+                res.sendStatus(400)
+            }
+
+        })
+        .catch((e) => {
+            console.error(e)
+        })
+
+    }
+    catch (e) {
+        console.log(e)
+    }
+    // sendJsonRequest(8085, "/api/products/", "POST", [req.body, req.files])
+    // .then((response) => res.send(response))
 })
 
 router.get("/detail-products", (req, res) => {
