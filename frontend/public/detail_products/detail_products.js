@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // find the product based on the ID
     // const product = products.find(p => p.id === productId);
 
-    fetch(`http://localhost:8085/api/products/${productId}`)
+    fetch(`http://localhost:8080/detail-products/${productId}`)
         .then((res) => res.json())
         .then((data) => {
             const product = data.data
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         })
         .catch((err) => {
-            console.err(err);
+            console.error(err);
         })
 
     // populate product details
