@@ -32,8 +32,12 @@ header {
     color: #153147;
     padding: 0 5px;
     cursor: pointer;
-    margin-left: 1350px;
     margin-top: 10px;
+}
+
+.menu_icons{
+    text-align: right;
+    margin-right: 20px;
 }
 
 .first_part .menu_icons i:hover {
