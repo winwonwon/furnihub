@@ -22,10 +22,6 @@ function login(username, password, callback) {
 
 router.route("/")
     .get((req, res, next) => {
-        console.log(req.session, req.sessionID)
-        if (!req.session.isAdmin) 
-            return res.status(502).send("Unauthorized")
-
         database.query('SELECT * FROM admin', function (error, results) {
             if (error) 
                 throw error;
@@ -41,7 +37,6 @@ router.route("/")
         login(req.body.username, req.body.password, (result) => {
             const isSuccess = result.length == 1
             if (isSuccess) {
-                req.session.isAdmin = true
                 res.status(200).send("success")
                 console.log(`Admin ${result[0].ACCOUNT_USERNAME} has logged in.`)
             } else {
