@@ -96,10 +96,6 @@ function handleEditButtonClick(event) {
     const quantityInput = document.getElementById("quantity");
     const priceInput = document.getElementById("price");
     const colorInput = document.getElementById("color");
-    // const picture1Input = document.getElementById("picture1");
-    // const picture2Input = document.getElementById("picture2");
-    // const picture3Input = document.getElementById("picture3");
-    // const picture4Input = document.getElementById("picture4");
 
     // Set input values to current product details
     nameInput.value = product.PRODUCT_NAME;
@@ -110,10 +106,6 @@ function handleEditButtonClick(event) {
     quantityInput.value = product.PRODUCT_QUANTITY;
     priceInput.value = product.PRODUCT_PRICE;
     colorInput.value = product.PRODUCT_COLOR;
-    // picture1Input.value = product.PRODUCT_PICTURE1;
-    // picture2Input.value = product.PRODUCT_PICTURE2;
-    // picture3Input.value = product.PRODUCT_PICTURE3;
-    // picture4Input.value = product.PRODUCT_PICTURE4;
 
     // Show the edit product popup
     showPopup();

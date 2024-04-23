@@ -149,8 +149,7 @@ router.put("/update-products/:id", [upload.any(), auth], (req, res) => {
 
 router.post("/insert-products", [upload.any(), auth], async (req, res) => {
     try {
-        // If you need to handle files, you can access them in the `files` property of the request object
-        // Here, we convert files to FormData format to forward them along with other data
+        // Re-construct formdata to be sent to another endpoint again.
         const formData = new FormData();
         req.files.forEach(file => {
             formData.append(file.fieldname, file.buffer, {
@@ -159,7 +158,7 @@ router.post("/insert-products", [upload.any(), auth], async (req, res) => {
             });
         });
   
-        // Append other data to the FormData object if needed
+        // Append other data 
         Object.keys(req.body).forEach(key => {
             formData.append(key, req.body[key]);
         });
@@ -187,8 +186,6 @@ router.post("/insert-products", [upload.any(), auth], async (req, res) => {
     catch (e) {
         console.log(e)
     }
-    // sendJsonRequest(8085, "/api/products/", "POST", [req.body, req.files])
-    // .then((response) => res.send(response))
 })
 
 router.get("/detail-products", (req, res) => {
