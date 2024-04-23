@@ -256,7 +256,6 @@ router.post("/search", (req, res) => {
     }
 */
 router.post("/adv-search", (req, res) => {
-    console.log(req.body)
     const query = `
         SELECT * FROM product 
         WHERE 
