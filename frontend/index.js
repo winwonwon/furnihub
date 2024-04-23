@@ -41,6 +41,17 @@ router.use(express.urlencoded({ extended: true }));
 app.use("/", router);
 app.use("/", express.static(path.join(__dirname, "public")))
 
+const auth = (req, res, next) => {
+    if (!req.session.isAdmin) {
+        res.redirect("/admin")
+        return
+    }
+
+    next()
+}
+
+router.use("/users", auth)
+
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "homepage", "homepage.html"))
 })
@@ -91,7 +102,7 @@ router.post("/products-search", (req, res) => {
     .then((response) => res.send(response))
 })
 
-router.delete("/delete-products/:id", (req, res) => {
+router.delete("/delete-products/:id", auth, (req, res) => {
     sendJsonRequest(8085, "/api/products/"+req.params.id, "DELETE")
     .then((response) => res.send(response))
 })
@@ -101,7 +112,7 @@ router.get("/get-products", (req, res) => {
     .then((response) => res.send(response))
 })
 
-router.put("/update-products/:id", upload.any(), (req, res) => {
+router.put("/update-products/:id", [upload.any(), auth], (req, res) => {
     const formData = new FormData();
     req.files.forEach(file => {
         formData.append(file.fieldname, file.buffer, {
@@ -136,7 +147,7 @@ router.put("/update-products/:id", upload.any(), (req, res) => {
     })
 })
 
-router.post("/insert-products", upload.any(), async (req, res) => {
+router.post("/insert-products", [upload.any(), auth], async (req, res) => {
     try {
         // If you need to handle files, you can access them in the `files` property of the request object
         // Here, we convert files to FormData format to forward them along with other data
@@ -167,7 +178,6 @@ router.post("/insert-products", upload.any(), async (req, res) => {
             } else {
                 res.sendStatus(400)
             }
-
         })
         .catch((e) => {
             console.error(e)
@@ -228,13 +238,7 @@ router.post("/admin", (req, res) => {
     })
 })
 
-router.get("/admin-landing", (req, res) => {
-    console.log(req.session)
-    if (!req.session.isAdmin) {
-        res.redirect("/admin")
-        return
-    }
-
+router.get("/admin-landing", auth, (req, res) => {
     res.sendFile(path.join(__dirname, "public", "stafflandingpage.html"))
 })
 
@@ -242,21 +246,11 @@ router.get("/mycart", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "mycart.html"))
 })
 
-router.get("/product-man", (req, res) => {
-    if (!req.session.isAdmin) {
-        res.redirect("/admin")
-        return
-    }
-
+router.get("/product-man", auth, (req, res) => {
     res.sendFile(path.join(__dirname, "public", "productman.html"))
 })
 
-router.get("/user-man", (req, res) => {
-    // if (!req.session.isAdmin) {
-    //     res.redirect("/admin")
-    //     return
-    // }
-
+router.get("/user-man", auth, (req, res) => {
     res.sendFile(path.join(__dirname, "public", "userman.html"))
 })
 
