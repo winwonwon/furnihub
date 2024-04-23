@@ -123,6 +123,7 @@ router.route("/")
             if (error)
                 throw error;
 
+            product.PRODUCT_ID = results.insertId           // PRODUCT_ID is AUTO_INCREMENT
             return res.send({ error: false, data: results.affectedRows, message: 'New product has been created successfully.', product });
         });
     })
@@ -198,7 +199,6 @@ router.route("/:id")
         2. URL: http://localhost:8085/api/products/110
     */
     .delete((req, res, next) => {
-        console.log("DELETING A PRODUCT");
         let productId = req.params.id;
         if (!productId) {
             return res.status(400).send({ error: true, message: 'Please provide product ID' });
