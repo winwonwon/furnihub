@@ -399,7 +399,10 @@ async function handleAddSaveButtonClick() {
         formData.append("PRODUCT_QUANTITY", newQuantity);
         formData.append("PRODUCT_PRICE", newPrice);
         formData.append("PRODUCT_COLOR", newColor);
-        formData.append("image", fileInput.files[0]);
+        formData.append("PRODUCT_PICTURE1", fileInput.files[0]);
+        formData.append("PRODUCT_PICTURE2", '');
+        formData.append("PRODUCT_PICTURE3", '');
+        formData.append("PRODUCT_PICTURE4", '');
         const response = await fetch('http://localhost:8085/api/products', {
             method: 'POST',
             body: formData

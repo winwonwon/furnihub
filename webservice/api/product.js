@@ -12,7 +12,7 @@ router.use(express.urlencoded({ extended: true }));
 
 async function uploadImage(image, cb) {
     let data = new FormData();
-    let imagePath = path.join(__dirname, "..", "images", image.originalname)
+    let imagePath = path.join(__dirname, "..", "temp", image.originalname)
     data.append('access_token', 'Qb1dF3_BNlP2P9Kg59Tf8zhnp07EIhfuPapTna3lUGs');
     data.append('imagedata', fs.createReadStream(imagePath));
     data.append('app', 'Furnihub');
@@ -35,7 +35,7 @@ async function uploadImage(image, cb) {
 
 // https://stackoverflow.com/questions/51483507/how-to-save-and-show-the-picture-saved-using-multer-package-in-nodejs
 const tempStorage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, "images"),
+    destination: (req, file, cb) => cb(null, "temp"),
     filename: (req, file, cb) => cb(null, file.originalname)
 })
 const upload = multer({
