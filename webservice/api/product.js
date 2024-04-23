@@ -218,7 +218,7 @@ router.route("/:id")
     URL: http://localhost:8085/api/products/search
     body: raw JSON
     1. {
-        "queryString": "chair"
+        "queryString": "linea"
     }
     2. {
         "queryString": "desk"
@@ -248,7 +248,7 @@ router.post("/search", (req, res) => {
         "price": "1000" 
     }
     2. {
-        "queryString": "Bed",
+        "queryString": "",
         "category": "Bed",
         "room": "Bedroom",
         "brand": "Koncept",
