@@ -1,10 +1,46 @@
 const database = require("../model/furnihub_db.js");
 
+const multer = require("multer")
+const axios = require("axios")
+const fs = require("fs")
+const path = require("path")
+const FormData = require("form-data")
 const express = require('express');
 const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
+async function uploadImage(image, cb) {
+    let data = new FormData();
+    let imagePath = path.join(__dirname, "..", "images", image.originalname)
+    data.append('access_token', 'Qb1dF3_BNlP2P9Kg59Tf8zhnp07EIhfuPapTna3lUGs');
+    data.append('imagedata', fs.createReadStream(imagePath));
+    data.append('app', 'Furnihub');
+
+    return await axios.request({
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://upload.gyazo.com/api/upload',
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
+        data: data
+    }).then((response) => {
+        fs.rmSync(imagePath, {force: true})
+        return response.data
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+// https://stackoverflow.com/questions/51483507/how-to-save-and-show-the-picture-saved-using-multer-package-in-nodejs
+const tempStorage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, "images"),
+    filename: (req, file, cb) => cb(null, file.originalname)
+})
+const upload = multer({
+    storage: tempStorage
+})
 router.route("/")
     /*
         Get all products
@@ -15,7 +51,6 @@ router.route("/")
         2. {}
     */
     .get((req, res, next) => {
-        console.log("returning all products");
         database.query('SELECT * FROM product', function (error, results) {
             if (error)
                 throw error;
@@ -67,12 +102,20 @@ router.route("/")
             }
         }
     */
-    .post((req, res, next) => {
-        console.log("Inserting new product!")
-        let product = req.body.product;
-
-        if (!product) {
+    .post(upload.any(), async (req, res, next) => {
+        const product = req.body;
+        if (!product) 
             return res.status(400).send({ error: true, message: 'Please provide product information' });
+
+        // If there's an image attached with request
+        if (req.files && req.files.length > 0) {
+            const image = req.files[0]
+            const uploadResult = await uploadImage(image)
+            if (uploadResult && uploadResult.url) {
+                product.PRODUCT_PICTURE1 = uploadResult.url
+            } else {
+                console.error("Error uploading an image.")
+            }
         }
 
         database.query("INSERT INTO product SET ?", product, function (error, results) {
@@ -94,11 +137,8 @@ router.route("/:id")
     */
     .get((req, res, next) => {
         let productId = req.params.id;
-        console.log(`returning product by id ${productId}`)
-
-        if (!productId) {
+        if (!productId) 
             return res.status(400).send({ error: true, message: 'Please provide product ID' });
-        }
 
         database.query("SELECT * FROM product WHERE PRODUCT_ID = ?", productId, function (error, results) {
             if (error)
@@ -131,13 +171,21 @@ router.route("/:id")
             }
         }
     */
-    .put((req, res, next) => {
-        console.log("Updating product")
+    .put(upload.any(), async (req, res, next) => {
         let productId = req.params.id;
-        let product = req.body.product;
-
-        if (!product) {
+        let product = req.body;
+        if (!product) 
             return res.status(400).send({ error: true, message: 'Please provide product information' });
+
+            // If there's an image attached with request
+        if (req.files && req.files.length > 0) {
+            const image = req.files[0]
+            const uploadResult = await uploadImage(image)
+            if (uploadResult && uploadResult.url) {
+                product.PRODUCT_PICTURE1 = uploadResult.url
+            } else {
+                console.error("Error uploading an image.")
+            }
         }
 
         database.query("UPDATE product SET ? WHERE PRODUCT_ID = ?", [product, productId], function (error, results) {
