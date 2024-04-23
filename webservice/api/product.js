@@ -10,6 +10,8 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
+// Function to upload image using Gyazo API
+// https://gyazo.com/api/docs
 async function uploadImage(image, cb) {
     let data = new FormData();
     let imagePath = path.join(__dirname, "..", "temp", image.originalname)
@@ -17,6 +19,7 @@ async function uploadImage(image, cb) {
     data.append('imagedata', fs.createReadStream(imagePath));
     data.append('app', 'Furnihub');
 
+    // Making a POST request to Gyazo API for image upload
     return await axios.request({
         method: 'post',
         maxBodyLength: Infinity,
@@ -26,13 +29,14 @@ async function uploadImage(image, cb) {
         },
         data: data
     }).then((response) => {
-        fs.rmSync(imagePath, {force: true})
+        fs.rmSync(imagePath, {force: true})         // Deleting temporary image file after uploaded
         return response.data
     }).catch((error) => {
         console.error(error);
     });
 }
 
+// Setting up multer for temporary storage of uploaded files
 // https://stackoverflow.com/questions/51483507/how-to-save-and-show-the-picture-saved-using-multer-package-in-nodejs
 const tempStorage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, "temp"),
@@ -41,6 +45,8 @@ const tempStorage = multer.diskStorage({
 const upload = multer({
     storage: tempStorage
 })
+
+// Handling GET and POST requests for '/api/products' endpoint
 router.route("/")
     /*
         Get all products
@@ -68,38 +74,33 @@ router.route("/")
         URL: http://localhost:8085/api/products
         body: raw JSON
         1. {
-            "product": {
-                PRODUCT_ID: 200,
-                PRODUCT_NAME: Luxury Chair,
-                PRODUCT_DESCRIPTION: Popular in Norway,
-                PRODUCT_CATEGORY: Chair,
-                PRODUCT_ROOM: Living Room,
-                PRODUCT_BRAND: Koncept,
-                PRODUCT_QUANTITY: 25,
-                PRODUCT_PRICE: 500,
-                PRODUCT_COLOR: Red,
-                PRODUCT_PICTURE1: "",
-                PRODUCT_PICTURE2: "",
-                PRODUCT_PICTURE3: "",
-                PRODUCT_PICTURE4: ""
-            }
+            PRODUCT_NAME: Luxury Chair,
+            PRODUCT_DESCRIPTION: Popular in Norway,
+            PRODUCT_CATEGORY: Chair,
+            PRODUCT_ROOM: Living Room,
+            PRODUCT_BRAND: Koncept,
+            PRODUCT_QUANTITY: 25,
+            PRODUCT_PRICE: 500,
+            PRODUCT_COLOR: Red,
+            PRODUCT_PICTURE1: "",
+            PRODUCT_PICTURE2: "",
+            PRODUCT_PICTURE3: "",
+            PRODUCT_PICTURE4: ""
         }
         2. {
-            "product": {
-                "PRODUCT_ID": 500,
-                "PRODUCT_NAME": "Royal Comfort Armchair",
-                "PRODUCT_DESCRIPTION": "Indulge in luxury with our Royal Comfort Armchair. Crafted with premium materials and exquisite attention to detail, this armchair offers unparalleled comfort and sophistication. Its classic design adds an elegant touch to any living room.",
-                "PRODUCT_CATEGORY": "Furniture",
-                "PRODUCT_ROOM": "Living Room",
-                "PRODUCT_BRAND": "Index Livingmall",
-                "PRODUCT_QUANTITY": 50,
-                "PRODUCT_PRICE": 999.99,
-                "PRODUCT_COLOR": "Deep Burgundy",
-                "PRODUCT_PICTURE1": "https://example.com/armchair_burgundy_1.jpg",
-                "PRODUCT_PICTURE2": "https://example.com/armchair_burgundy_2.jpg",
-                "PRODUCT_PICTURE3": "https://example.com/armchair_burgundy_3.jpg",
-                "PRODUCT_PICTURE4": "https://example.com/armchair_burgundy_4.jpg"
-            }
+            "PRODUCT_ID": 500,
+            "PRODUCT_NAME": "Royal Comfort Armchair",
+            "PRODUCT_DESCRIPTION": "Indulge in luxury with our Royal Comfort Armchair. Crafted with premium materials and exquisite attention to detail, this armchair offers unparalleled comfort and sophistication. Its classic design adds an elegant touch to any living room.",
+            "PRODUCT_CATEGORY": "Furniture",
+            "PRODUCT_ROOM": "Living Room",
+            "PRODUCT_BRAND": "Index Livingmall",
+            "PRODUCT_QUANTITY": 50,
+            "PRODUCT_PRICE": 999.99,
+            "PRODUCT_COLOR": "Deep Burgundy",
+            "PRODUCT_PICTURE1": "https://example.com/armchair_burgundy_1.jpg",
+            "PRODUCT_PICTURE2": "https://example.com/armchair_burgundy_2.jpg",
+            "PRODUCT_PICTURE3": "https://example.com/armchair_burgundy_3.jpg",
+            "PRODUCT_PICTURE4": "https://example.com/armchair_burgundy_4.jpg"
         }
     */
     .post(upload.any(), async (req, res, next) => {
@@ -126,14 +127,13 @@ router.route("/")
         });
     })
 
+// Handling GET, PUT, and DELETE requests for '/api/products/:id' endpoint
 router.route("/:id")
     /*
         Get product by ID
         method: get
-        1. URL: http://localhost:8085/api/products/123
-        2. URL: http://localhost:8085/api/products/321
-        body: raw JSON
-        1. {}
+        1. URL: http://localhost:8085/api/products/110
+        2. URL: http://localhost:8085/api/products/111
     */
     .get((req, res, next) => {
         let productId = req.params.id;
@@ -153,22 +153,18 @@ router.route("/:id")
     /*
         Update product by ID
         method: put
-        URL: http://localhost:8085/api/products/123
+        URL: http://localhost:8085/api/products/110
         body: raw JSON
         1. {
-            "product": {
-                "PRODUCT_ID": 123,
-                "PRODUCT_NAME": "Updated Product Name",
-                "PRODUCT_DESCRIPTION": "Updated product description"
-            }
+            "PRODUCT_ID": 123,
+            "PRODUCT_NAME": "Updated Product Name",
+            "PRODUCT_DESCRIPTION": "Updated product description"
         }
         2. {
-            "product": {
-                "PRODUCT_ID": 333,
-                "PRODUCT_NAME": "Updated Product Name",
-                "PRODUCT_DESCRIPTION": "Updated product description",
-                "PRODUCT_BRAND": "Index Livingmall"
-            }
+            "PRODUCT_ID": 333,
+            "PRODUCT_NAME": "Updated Product Name",
+            "PRODUCT_DESCRIPTION": "Updated product description",
+            "PRODUCT_BRAND": "Index Livingmall"
         }
     */
     .put(upload.any(), async (req, res, next) => {
@@ -177,7 +173,7 @@ router.route("/:id")
         if (!product) 
             return res.status(400).send({ error: true, message: 'Please provide product information' });
 
-            // If there's an image attached with request
+        // If there's an image attached with request
         if (req.files && req.files.length > 0) {
             const image = req.files[0]
             const uploadResult = await uploadImage(image)
@@ -198,14 +194,12 @@ router.route("/:id")
     /*
         Delete product by ID
         method: delete
-        URL: http://localhost:8085/api/products/123
-        body: raw JSON
-        {}
+        1. URL: http://localhost:8085/api/products/123
+        2. URL: http://localhost:8085/api/products/110
     */
     .delete((req, res, next) => {
         console.log("DELETING A PRODUCT");
         let productId = req.params.id;
-
         if (!productId) {
             return res.status(400).send({ error: true, message: 'Please provide product ID' });
         }
